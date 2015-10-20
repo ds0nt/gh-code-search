@@ -1,0 +1,4 @@
+func copyAttributes(dst *Node, src Token) {
+if len(src.Attr) == 0 {
+return
+}

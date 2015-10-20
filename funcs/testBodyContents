@@ -1,0 +1,5 @@
+func testBodyContents(t *testing.T, wantContentLength int64, wantBody string, write func(st *serverTester)) {
+testServerRequest(t, write, func(r *http.Request) {
+if r.Method != "POST" {
+t.Errorf("Method = %q; want POST", r.Method)
+}

@@ -1,0 +1,4 @@
+func readString(p []byte) (s string, remain []byte, err error) {
+if len(p) == 0 {
+return "", p, errNeedMore
+}

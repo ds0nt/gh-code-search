@@ -1,0 +1,11 @@
+func TestUnmarshalNSAttr(t *testing.T) {
+for i, tt := range tableAttrs {
+var dst TableAttrs
+var err error
+if tt.ns != "" {
+d := NewDecoder(strings.NewReader(tt.xml))
+d.DefaultSpace = tt.ns
+err = d.Decode(&dst)
+} else {
+err = Unmarshal([]byte(tt.xml), &dst)
+}

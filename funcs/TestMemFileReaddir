@@ -1,0 +1,5 @@
+func TestMemFileReaddir(t *testing.T) {
+fs := NewMemFS()
+if err := fs.Mkdir("/foo", 0777); err != nil {
+t.Fatalf("Mkdir: %v", err)
+}

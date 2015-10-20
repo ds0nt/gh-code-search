@@ -1,0 +1,12 @@
+func TestAppendTableSize(t *testing.T) {
+tests := []struct {
+i       uint32
+wantHex string
+}{
+// Fits into 1 byte
+{30, "3e"},
+
+// Extra byte
+{31, "3f00"},
+{32, "3f01"},
+}

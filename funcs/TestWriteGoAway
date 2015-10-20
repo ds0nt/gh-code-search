@@ -1,0 +1,6 @@
+func TestWriteGoAway(t *testing.T) {
+const debug = "foo"
+fr, buf := testFramer()
+if err := fr.WriteGoAway(0x01020304, 0x05060708, []byte(debug)); err != nil {
+t.Fatal(err)
+}

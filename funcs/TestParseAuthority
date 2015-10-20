@@ -1,0 +1,6 @@
+func TestParseAuthority(t *testing.T) {
+for _, tt := range parseAuthorityTests {
+out := parseAuthority(tt.in)
+if out != tt.out {
+t.Errorf("got %v; want %v", out, tt.out)
+}

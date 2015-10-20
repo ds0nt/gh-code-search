@@ -1,0 +1,4 @@
+func printNodeLabel(w io.Writer, n *node) error {
+for _, c := range n.children {
+fmt.Fprintf(w, "%q,n", c.label)
+}

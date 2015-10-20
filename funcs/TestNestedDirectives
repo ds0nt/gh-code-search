@@ -1,0 +1,8 @@
+func TestNestedDirectives(t *testing.T) {
+d := NewDecoder(strings.NewReader(nestedDirectivesInput))
+
+for i, want := range nestedDirectivesTokens {
+have, err := d.Token()
+if err != nil {
+t.Fatalf("token %d: unexpected error: %s", i, err)
+}

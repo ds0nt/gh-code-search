@@ -1,0 +1,15 @@
+func newFamily() *family {
+return &family{
+Buckets: [bucketsPerFamily]*traceBucket{
+{Cond: minCond(0)},
+{Cond: minCond(50 * time.Millisecond)},
+{Cond: minCond(100 * time.Millisecond)},
+{Cond: minCond(200 * time.Millisecond)},
+{Cond: minCond(500 * time.Millisecond)},
+{Cond: minCond(1 * time.Second)},
+{Cond: minCond(10 * time.Second)},
+{Cond: minCond(100 * time.Second)},
+{Cond: errorCond{}},
+},
+Latency: timeseries.NewMinuteHourSeries(func() timeseries.Observable { return new(histogram) }),
+}

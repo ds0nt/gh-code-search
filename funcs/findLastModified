@@ -1,0 +1,3 @@
+func findLastModified(fs FileSystem, ls LockSystem, name string, fi os.FileInfo) (string, error) {
+return fi.ModTime().Format(http.TimeFormat), nil
+}

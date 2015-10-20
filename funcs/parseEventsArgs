@@ -1,0 +1,5 @@
+func parseEventsArgs(req *http.Request) (fam string, b int, ok bool) {
+fam, bStr := req.FormValue("fam"), req.FormValue("b")
+if fam == "" || bStr == "" {
+return "", 0, false
+}

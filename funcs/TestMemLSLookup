@@ -1,0 +1,16 @@
+func TestMemLSLookup(t *testing.T) {
+now := time.Unix(0, 0)
+m := NewMemLS().(*memLS)
+
+badToken := m.nextToken()
+t.Logf("badToken=%q", badToken)
+
+for _, name := range lockTestNames {
+token, err := m.Create(now, LockDetails{
+Root:      name,
+Duration:  infiniteTimeout,
+ZeroDepth: lockTestZeroDepth(name),
+})
+if err != nil {
+t.Fatalf("creating lock for %q: %v", name, err)
+}

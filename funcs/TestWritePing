@@ -1,0 +1,8 @@
+func TestWritePing(t *testing.T)    { testWritePing(t, false) }
+func TestWritePingAck(t *testing.T) { testWritePing(t, true) }
+
+func testWritePing(t *testing.T, ack bool) {
+fr, buf := testFramer()
+if err := fr.WritePing(ack, [8]byte{1, 2, 3, 4, 5, 6, 7, 8}); err != nil {
+t.Fatal(err)
+}

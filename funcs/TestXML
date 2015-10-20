@@ -1,0 +1,9 @@
+func TestXML(t *testing.T) {
+const s = "<?xml version="1.0" encoding="windows-1252"?><a><Word>rxe9sumxe9</Word></a>"
+
+d := xml.NewDecoder(strings.NewReader(s))
+d.CharsetReader = NewReaderLabel
+
+var a struct {
+Word string
+}

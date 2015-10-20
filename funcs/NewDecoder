@@ -1,0 +1,7 @@
+func NewDecoder(r io.Reader) *Decoder {
+d := &Decoder{
+ns:       make(map[string]string),
+nextByte: -1,
+line:     1,
+Strict:   true,
+}

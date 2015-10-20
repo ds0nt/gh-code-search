@@ -1,0 +1,8 @@
+func attrSig(se xml.StartElement) string {
+var names []string
+for _, attr := range se.Attr {
+if attr.Name.Local == "fmt" {
+names = append(names, "fmt-"+attr.Value)
+} else {
+names = append(names, attr.Name.Local)
+}

@@ -1,0 +1,5 @@
+func TestParser(t *testing.T) {
+testFiles, err := filepath.Glob(testDataDir + "*.dat")
+if err != nil {
+t.Fatal(err)
+}

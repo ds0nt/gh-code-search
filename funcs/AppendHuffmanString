@@ -1,0 +1,7 @@
+func AppendHuffmanString(dst []byte, s string) []byte {
+rembits := uint8(8)
+
+for i := 0; i < len(s); i++ {
+if rembits == 8 {
+dst = append(dst, 0)
+}

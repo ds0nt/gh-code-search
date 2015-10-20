@@ -1,0 +1,15 @@
+func TestReset(t *testing.T) {
+tr := New("foo", "bar")
+tr.LazyLog(s{}, false)
+tr.LazyPrintf("%d", 1)
+tr.SetRecycler(func(_ interface{}) {})
+tr.SetTraceInfo(3, 4)
+tr.SetMaxEvents(100)
+tr.SetError()
+tr.Finish()
+
+tr.(*trace).reset()
+
+if !reflect.DeepEqual(tr, new(trace)) {
+t.Errorf("reset didn't clear all fields: %+v", tr)
+}

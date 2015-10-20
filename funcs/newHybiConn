@@ -1,0 +1,6 @@
+func newHybiConn(config *Config, buf *bufio.ReadWriter, rwc io.ReadWriteCloser, request *http.Request) *Conn {
+if buf == nil {
+br := bufio.NewReader(rwc)
+bw := bufio.NewWriter(rwc)
+buf = bufio.NewReadWriter(br, bw)
+}

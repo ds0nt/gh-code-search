@@ -1,0 +1,15 @@
+func inSelectIM(p *parser) bool {
+switch p.tok.Type {
+case ErrorToken:
+// Stop parsing.
+return true
+case TextToken:
+p.addText(strings.Replace(p.tok.Data, "x00", "", -1))
+case StartTagToken:
+switch p.tok.DataAtom {
+case a.Html:
+return inBodyIM(p)
+case a.Option:
+if p.top().DataAtom == a.Option {
+p.oe.pop()
+}

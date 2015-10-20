@@ -1,0 +1,17 @@
+func TestMaxBufferReconstruction(t *testing.T) {
+// Exceeding the maximum buffer size at any point while tokenizing permits
+// reconstructing the original input.
+tests:
+for _, test := range tokenTests {
+for maxBuf := 1; ; maxBuf++ {
+r := strings.NewReader(test.html)
+z := NewTokenizer(r)
+z.SetMaxBuf(maxBuf)
+var tokenized bytes.Buffer
+for {
+tt := z.Next()
+tokenized.Write(z.Raw())
+if tt == ErrorToken {
+if err := z.Err(); err != io.EOF && err != ErrBufferExceeded {
+t.Errorf("%s: unexpected error: %v", test.desc, err)
+}

@@ -1,0 +1,5 @@
+func TestFlowAdd(t *testing.T) {
+var f flow
+if !f.add(1) {
+t.Fatal("failed to add 1")
+}

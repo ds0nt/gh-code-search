@@ -1,0 +1,6 @@
+func TestRawTokenAltEncoding(t *testing.T) {
+d := NewDecoder(strings.NewReader(testInputAltEncoding))
+d.CharsetReader = func(charset string, input io.Reader) (io.Reader, error) {
+if charset != "x-testing-uppercase" {
+t.Fatalf("unexpected charset %q", charset)
+}

@@ -1,0 +1,6 @@
+func parseCondition(s string) (c Condition, remaining string, ok bool) {
+tokenType, tokenStr, s := lex(s)
+if tokenType == notTokenType {
+c.Not = true
+tokenType, tokenStr, s = lex(s)
+}

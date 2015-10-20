@@ -1,0 +1,8 @@
+func parseDoctype(s string) (n *Node, quirks bool) {
+n = &Node{Type: DoctypeNode}
+
+// Find the name.
+space := strings.IndexAny(s, whitespace)
+if space == -1 {
+space = len(s)
+}

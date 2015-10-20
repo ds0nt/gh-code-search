@@ -1,0 +1,6 @@
+func TestRawTokenAltEncodingNoConverter(t *testing.T) {
+d := NewDecoder(strings.NewReader(testInputAltEncoding))
+token, err := d.RawToken()
+if token == nil {
+t.Fatalf("expected a token on first RawToken call")
+}

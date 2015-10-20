@@ -1,0 +1,5 @@
+func lower(b []byte) []byte {
+for i, c := range b {
+if 'A' <= c && c <= 'Z' {
+b[i] = c + 'a' - 'A'
+}

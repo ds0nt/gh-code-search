@@ -1,0 +1,5 @@
+func Head(ctx context.Context, client *http.Client, url string) (*http.Response, error) {
+req, err := http.NewRequest("HEAD", url, nil)
+if err != nil {
+return nil, err
+}

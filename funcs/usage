@@ -1,0 +1,5 @@
+func usage() {
+fmt.Fprintf(os.Stderr, "Usage: h2i <hostname>nn")
+flag.PrintDefaults()
+os.Exit(1)
+}

@@ -1,0 +1,8 @@
+func TestPriority(t *testing.T) {
+// A -> B
+// move A's parent to B
+streams := make(map[uint32]*stream)
+a := &stream{
+parent: nil,
+weight: 16,
+}

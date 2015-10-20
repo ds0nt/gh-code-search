@@ -1,0 +1,4 @@
+func setsockopt(fd, level, name int, v unsafe.Pointer, l sysSockoptLen) error {
+if _, errno := socketcall(sysSETSOCKOPT, uintptr(fd), uintptr(level), uintptr(name), uintptr(v), uintptr(l), 0); errno != 0 {
+return error(errno)
+}

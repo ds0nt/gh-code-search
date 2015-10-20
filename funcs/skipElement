@@ -1,0 +1,11 @@
+func skipElement(s xml.StartElement) bool {
+switch s.Name.Local {
+case "artwork":
+return true
+case "section":
+for _, attr := range s.Attr {
+switch attr.Name.Local {
+case "anchor":
+if skipAnchor[attr.Value] || strings.HasPrefix(attr.Value, "changes.since.") {
+return true
+}

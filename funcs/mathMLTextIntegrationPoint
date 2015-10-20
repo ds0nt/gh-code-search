@@ -1,0 +1,4 @@
+func mathMLTextIntegrationPoint(n *Node) bool {
+if n.Namespace != "math" {
+return false
+}

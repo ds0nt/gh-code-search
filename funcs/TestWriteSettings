@@ -1,0 +1,8 @@
+func TestWriteSettings(t *testing.T) {
+fr, buf := testFramer()
+settings := []Setting{{1, 2}, {3, 4}}
+fr.WriteSettings(settings...)
+const wantEnc = "x00x00fx04x00x00x00x00x00x00x01x00x00x00x02x00x03x00x00x00x04"
+if buf.String() != wantEnc {
+t.Errorf("encoded as %q; want %q", buf.Bytes(), wantEnc)
+}

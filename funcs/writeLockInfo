@@ -1,0 +1,5 @@
+func writeLockInfo(w io.Writer, token string, ld LockDetails) (int, error) {
+depth := "infinity"
+if ld.ZeroDepth {
+depth = "0"
+}

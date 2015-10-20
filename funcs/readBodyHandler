@@ -1,0 +1,8 @@
+func readBodyHandler(t *testing.T, want string) func(w http.ResponseWriter, r *http.Request) {
+return func(w http.ResponseWriter, r *http.Request) {
+buf := make([]byte, len(want))
+_, err := io.ReadFull(r.Body, buf)
+if err != nil {
+t.Error(err)
+return
+}

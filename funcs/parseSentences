@@ -1,0 +1,5 @@
+func parseSentences(sens string) []string {
+sens = strings.TrimSpace(sens)
+if sens == "" {
+return nil
+}

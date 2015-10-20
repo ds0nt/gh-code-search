@@ -1,0 +1,4 @@
+func newGoroutineLock() goroutineLock {
+if !DebugGoroutines {
+return 0
+}

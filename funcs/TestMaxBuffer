@@ -1,0 +1,8 @@
+func TestMaxBuffer(t *testing.T) {
+// Exceeding the maximum buffer size generates ErrBufferExceeded.
+z := NewTokenizer(strings.NewReader("<" + strings.Repeat("t", 10)))
+z.SetMaxBuf(5)
+tt := z.Next()
+if got, want := tt, ErrorToken; got != want {
+t.Fatalf("token type: got: %v want: %v", got, want)
+}

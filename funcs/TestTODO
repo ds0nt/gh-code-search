@@ -1,0 +1,5 @@
+func TestTODO(t *testing.T) {
+c := TODO()
+if c == nil {
+t.Fatalf("TODO returned nil")
+}

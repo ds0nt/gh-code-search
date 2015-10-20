@@ -1,0 +1,5 @@
+func NewFramer(w io.Writer, r io.Reader) *Framer {
+fr := &Framer{
+w: w,
+r: r,
+}

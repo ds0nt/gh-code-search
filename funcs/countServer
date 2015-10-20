@@ -1,0 +1,8 @@
+func countServer(ws *Conn) {
+defer ws.Close()
+for {
+var count Count
+err := JSON.Receive(ws, &count)
+if err != nil {
+return
+}

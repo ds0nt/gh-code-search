@@ -1,0 +1,5 @@
+func TestStructPointerMarshal(t *testing.T) {
+type A struct {
+XMLName string `xml:"a"`
+B       []interface{}
+}

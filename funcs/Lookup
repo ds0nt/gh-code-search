@@ -1,0 +1,4 @@
+func Lookup(s []byte) Atom {
+if len(s) == 0 || len(s) > maxAtomLen {
+return 0
+}

@@ -1,0 +1,5 @@
+func TestReader(t *testing.T) {
+switch runtime.GOOS {
+case "nacl": // platforms that don't permit direct file system access
+t.Skipf("not supported on %q", runtime.GOOS)
+}

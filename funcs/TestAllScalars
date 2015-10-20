@@ -1,0 +1,7 @@
+func TestAllScalars(t *testing.T) {
+var a allScalars
+err := Unmarshal([]byte(testScalarsInput), &a)
+
+if err != nil {
+t.Fatal(err)
+}

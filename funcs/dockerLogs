@@ -1,0 +1,5 @@
+func dockerLogs(container string) ([]byte, error) {
+out, err := exec.Command("docker", "wait", container).CombinedOutput()
+if err != nil {
+return out, err
+}

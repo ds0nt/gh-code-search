@@ -1,0 +1,5 @@
+func serveProdTLS() error {
+c, err := googlestorage.NewServiceClient()
+if err != nil {
+return err
+}

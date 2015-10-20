@@ -1,0 +1,6 @@
+func filterOutClientConn(in []*clientConn, exclude *clientConn) []*clientConn {
+out := in[:0]
+for _, v := range in {
+if v != exclude {
+out = append(out, v)
+}

@@ -1,0 +1,8 @@
+func TestEncoderSetMaxDynamicTableSizeLimit(t *testing.T) {
+e := NewEncoder(nil)
+// 4095 < initialHeaderTableSize means maxSize is truncated to
+// 4095.
+e.SetMaxDynamicTableSizeLimit(4095)
+if got, want := e.dynTab.maxSize, uint32(4095); got != want {
+t.Errorf("e.dynTab.maxSize = %v; want %v", got, want)
+}

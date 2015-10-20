@@ -1,0 +1,5 @@
+func xmlLang(s xml.StartElement, d string) string {
+for _, attr := range s.Attr {
+if attr.Name == xmlLangName {
+return attr.Value
+}

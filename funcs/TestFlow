@@ -1,0 +1,9 @@
+func TestFlow(t *testing.T) {
+var st flow
+var conn flow
+st.add(3)
+conn.add(2)
+
+if got, want := st.available(), int32(3); got != want {
+t.Errorf("available = %d; want %d", got, want)
+}

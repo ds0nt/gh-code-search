@@ -1,0 +1,5 @@
+func testLayers(t *testing.T, seed int64, testTimeout bool) {
+rand.Seed(seed)
+errorf := func(format string, a ...interface{}) {
+t.Errorf(fmt.Sprintf("seed=%d: %s", seed, format), a...)
+}

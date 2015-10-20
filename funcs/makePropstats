@@ -1,0 +1,5 @@
+func makePropstats(x, y Propstat) []Propstat {
+pstats := make([]Propstat, 0, 2)
+if len(x.Props) != 0 {
+pstats = append(pstats, x)
+}

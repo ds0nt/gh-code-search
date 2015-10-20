@@ -1,0 +1,5 @@
+func findContentType(fs FileSystem, ls LockSystem, name string, fi os.FileInfo) (string, error) {
+f, err := fs.OpenFile(name, os.O_RDONLY, 0)
+if err != nil {
+return "", err
+}

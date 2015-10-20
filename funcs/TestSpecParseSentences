@@ -1,0 +1,17 @@
+func TestSpecParseSentences(t *testing.T) {
+tests := []struct {
+ss   string
+want []string
+}{
+{"Sentence 1. Sentence 2.",
+[]string{
+"Sentence 1.",
+"Sentence 2.",
+}},
+{"Sentence 1.  nSentence 2.tSentence 3.",
+[]string{
+"Sentence 1.",
+"Sentence 2.",
+"Sentence 3.",
+}},
+}

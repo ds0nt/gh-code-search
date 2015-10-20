@@ -1,0 +1,12 @@
+func getSlash(st *serverTester) { st.bodylessReq1() }
+
+func TestServer_Response_NoData(t *testing.T) {
+testServerResponse(t, func(w http.ResponseWriter, r *http.Request) error {
+// Nothing.
+return nil
+}, func(st *serverTester) {
+getSlash(st)
+hf := st.wantHeaders()
+if !hf.StreamEnded() {
+t.Fatal("want END_STREAM flag")
+}

@@ -1,0 +1,8 @@
+func getEventFamily(fam string) *eventFamily {
+famMu.Lock()
+defer famMu.Unlock()
+f := families[fam]
+if f == nil {
+f = &eventFamily{}
+families[fam] = f
+}

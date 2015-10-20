@@ -1,0 +1,14 @@
+func afterAfterFramesetIM(p *parser) bool {
+switch p.tok.Type {
+case CommentToken:
+p.doc.AppendChild(&Node{
+Type: CommentNode,
+Data: p.tok.Data,
+})
+case TextToken:
+// Ignore all text but whitespace.
+s := strings.Map(func(c rune) rune {
+switch c {
+case ' ', 't', 'n', 'f', 'r':
+return c
+}

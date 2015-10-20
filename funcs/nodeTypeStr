@@ -1,0 +1,9 @@
+func nodeTypeStr(n int) string {
+switch n {
+case nodeTypeNormal:
+return "+"
+case nodeTypeException:
+return "!"
+case nodeTypeParentOnly:
+return "o"
+}

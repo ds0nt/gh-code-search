@@ -1,0 +1,19 @@
+func TestHybiShortRead(t *testing.T) {
+wireData := []byte{0x81, 0x05, 'h', 'e', 'l', 'l', 'o',
+0x89, 0x05, 'h', 'e', 'l', 'l', 'o', // ping
+0x81, 0x05, 'w', 'o', 'r', 'l', 'd'}
+br := bufio.NewReader(bytes.NewBuffer(wireData))
+bw := bufio.NewWriter(bytes.NewBuffer([]byte{}))
+conn := newHybiConn(newConfig(t, "/"), bufio.NewReadWriter(br, bw), nil, nil)
+
+step := 0
+pos := 0
+expectedPos := []int{2, 5, 16, 19}
+expectedLen := []int{3, 2, 3, 2}
+for {
+msg := make([]byte, 3)
+n, err := conn.Read(msg)
+if step >= len(expectedPos) {
+if err == nil {
+t.Errorf("read not EOF")
+}

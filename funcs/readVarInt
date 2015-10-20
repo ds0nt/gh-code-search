@@ -1,0 +1,4 @@
+func readVarInt(n byte, p []byte) (i uint64, remain []byte, err error) {
+if n < 1 || n > 8 {
+panic("bad n")
+}

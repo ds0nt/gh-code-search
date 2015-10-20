@@ -1,0 +1,4 @@
+func TestTransportExternal(t *testing.T) {
+if !*extNet {
+t.Skip("skipping external network test")
+}

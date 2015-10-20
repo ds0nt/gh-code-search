@@ -1,0 +1,4 @@
+func makeText() string {
+if !*crush {
+return strings.Join(labelsList, "")
+}

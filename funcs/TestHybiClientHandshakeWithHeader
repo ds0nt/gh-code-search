@@ -1,0 +1,16 @@
+func TestHybiClientHandshakeWithHeader(t *testing.T) {
+b := bytes.NewBuffer([]byte{})
+bw := bufio.NewWriter(b)
+br := bufio.NewReader(strings.NewReader(`HTTP/1.1 101 Switching Protocols
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=
+Sec-WebSocket-Protocol: chat
+
+`))
+var err error
+config := new(Config)
+config.Location, err = url.ParseRequestURI("ws://server.example.com/chat")
+if err != nil {
+t.Fatal("location url", err)
+}

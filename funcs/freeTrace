@@ -1,0 +1,4 @@
+func freeTrace(tr *trace) {
+if DebugUseAfterFinish {
+return // never reuse
+}

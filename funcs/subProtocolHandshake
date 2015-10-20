@@ -1,0 +1,6 @@
+func subProtocolHandshake(config *Config, req *http.Request) error {
+for _, proto := range config.Protocol {
+if proto == "chat" {
+config.Protocol = []string{proto}
+return nil
+}

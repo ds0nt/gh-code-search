@@ -1,0 +1,3 @@
+func newHybiClientConn(config *Config, buf *bufio.ReadWriter, rwc io.ReadWriteCloser) *Conn {
+return newHybiConn(config, buf, rwc, nil)
+}

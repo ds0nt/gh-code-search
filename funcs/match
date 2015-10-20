@@ -1,0 +1,5 @@
+func match(s string, t []byte) bool {
+for i, c := range t {
+if s[i] != c {
+return false
+}

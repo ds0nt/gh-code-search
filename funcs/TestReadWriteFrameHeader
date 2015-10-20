@@ -1,0 +1,21 @@
+func TestReadWriteFrameHeader(t *testing.T) {
+tests := []struct {
+len      uint32
+typ      FrameType
+flags    Flags
+streamID uint32
+}{
+{len: 0, typ: 255, flags: 1, streamID: 0},
+{len: 0, typ: 255, flags: 1, streamID: 1},
+{len: 0, typ: 255, flags: 1, streamID: 255},
+{len: 0, typ: 255, flags: 1, streamID: 256},
+{len: 0, typ: 255, flags: 1, streamID: 65535},
+{len: 0, typ: 255, flags: 1, streamID: 65536},
+
+{len: 0, typ: 1, flags: 255, streamID: 1},
+{len: 255, typ: 1, flags: 255, streamID: 1},
+{len: 256, typ: 1, flags: 255, streamID: 1},
+{len: 65535, typ: 1, flags: 255, streamID: 1},
+{len: 65536, typ: 1, flags: 255, streamID: 1},
+{len: 16777215, typ: 1, flags: 255, streamID: 1},
+}

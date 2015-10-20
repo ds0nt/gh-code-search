@@ -1,0 +1,5 @@
+func TestWithProtocol(t *testing.T) {
+proto, err := testWithProtocol(t, []string{"chat"})
+if err != nil {
+t.Errorf("SubProto: unexpected error: %v", err)
+}

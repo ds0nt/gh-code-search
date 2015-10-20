@@ -1,0 +1,16 @@
+func TestMemLSConfirm(t *testing.T) {
+now := time.Unix(0, 0)
+m := NewMemLS().(*memLS)
+alice, err := m.Create(now, LockDetails{
+Root:      "/alice",
+Duration:  infiniteTimeout,
+ZeroDepth: false,
+})
+tweedle, err := m.Create(now, LockDetails{
+Root:      "/tweedle",
+Duration:  infiniteTimeout,
+ZeroDepth: false,
+})
+if err != nil {
+t.Fatalf("Create: %v", err)
+}

@@ -1,0 +1,7 @@
+func getFamily(fam string, allocNew bool) *family {
+completedMu.RLock()
+f := completedTraces[fam]
+completedMu.RUnlock()
+if f == nil && allocNew {
+f = allocFamily(fam)
+}

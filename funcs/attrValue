@@ -1,0 +1,5 @@
+func attrValue(se xml.StartElement, attr string) string {
+for _, a := range se.Attr {
+if a.Name.Local == attr {
+return a.Value
+}

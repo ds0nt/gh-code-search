@@ -1,0 +1,9 @@
+func readLockInfo(r io.Reader) (li lockInfo, status int, err error) {
+c := &countingReader{r: r}
+if err = xml.NewDecoder(c).Decode(&li); err != nil {
+if err == io.EOF {
+if c.n == 0 {
+// An empty body means to refresh the lock.
+// http://www.webdav.org/specs/rfc4918.html#refreshing-locks
+return lockInfo{}, 0, nil
+}

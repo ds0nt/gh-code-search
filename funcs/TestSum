@@ -1,0 +1,9 @@
+func TestSum(t *testing.T) {
+var h histogram
+
+for _, test := range sumTests {
+h.addMeasurement(test.value)
+sum := h.sum
+if sum != test.sum {
+t.Errorf("h.Sum = %v WANT: %v", sum, test.sum)
+}

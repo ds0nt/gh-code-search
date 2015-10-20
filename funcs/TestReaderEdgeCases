@@ -1,0 +1,7 @@
+func TestReaderEdgeCases(t *testing.T) {
+const s = "<p>An io.Reader can return (0, nil) or (n, io.EOF).</p>"
+testCases := []io.Reader{
+&zeroOneByteReader{s: s},
+&eofStringsReader{s: s},
+&stuckReader{},
+}

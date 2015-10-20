@@ -1,0 +1,8 @@
+func TestSettingString(t *testing.T) {
+tests := []struct {
+s    Setting
+want string
+}{
+{Setting{SettingMaxFrameSize, 123}, "[MAX_FRAME_SIZE = 123]"},
+{Setting{1<<16 - 1, 123}, "[UNKNOWN_SETTING_65535 = 123]"},
+}

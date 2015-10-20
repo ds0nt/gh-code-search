@@ -1,0 +1,5 @@
+func readParseTest(r *bufio.Reader) (text, want, context string, err error) {
+line, err := r.ReadSlice('n')
+if err != nil {
+return "", "", "", err
+}

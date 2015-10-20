@@ -1,0 +1,4 @@
+func findResourceType(fs FileSystem, ls LockSystem, name string, fi os.FileInfo) (string, error) {
+if fi.IsDir() {
+return `<D:collection xmlns:D="DAV:"/>`, nil
+}

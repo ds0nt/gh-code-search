@@ -1,0 +1,3 @@
+func setControlMessage(fd int, opt *rawOpt, cf ControlFlags, on bool) error {
+return errOpNoSupport
+}

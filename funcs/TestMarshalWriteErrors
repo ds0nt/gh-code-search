@@ -1,0 +1,16 @@
+func TestMarshalWriteErrors(t *testing.T) {
+var buf bytes.Buffer
+const writeCap = 1024
+w := &limitedBytesWriter{&buf, writeCap}
+enc := NewEncoder(w)
+var err error
+var i int
+const n = 4000
+for i = 1; i <= n; i++ {
+err = enc.Encode(&Passenger{
+Name:   []string{"Alice", "Bob"},
+Weight: 5,
+})
+if err != nil {
+break
+}

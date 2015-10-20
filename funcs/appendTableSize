@@ -1,0 +1,6 @@
+func appendTableSize(dst []byte, v uint32) []byte {
+first := len(dst)
+dst = appendVarInt(dst, 5, uint64(v))
+dst[first] |= 0x20
+return dst
+}

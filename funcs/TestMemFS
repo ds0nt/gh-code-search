@@ -1,0 +1,3 @@
+func TestMemFS(t *testing.T) {
+testFS(t, NewMemFS())
+}

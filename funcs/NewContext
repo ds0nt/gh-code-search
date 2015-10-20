@@ -1,0 +1,3 @@
+func NewContext(ctx context.Context, tr Trace) context.Context {
+return context.WithValue(ctx, contextKey, tr)
+}

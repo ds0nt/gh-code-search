@@ -1,0 +1,5 @@
+func appendNewName(dst []byte, f HeaderField, indexing bool) []byte {
+dst = append(dst, encodeTypeByte(indexing, f.Sensitive))
+dst = appendHpackString(dst, f.Name)
+return appendHpackString(dst, f.Value)
+}

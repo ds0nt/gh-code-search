@@ -1,0 +1,6 @@
+func parseForeignContent(p *parser) bool {
+switch p.tok.Type {
+case TextToken:
+if p.framesetOK {
+p.framesetOK = strings.TrimLeft(p.tok.Data, whitespaceOrNUL) == ""
+}

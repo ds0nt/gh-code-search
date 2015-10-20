@@ -1,0 +1,5 @@
+func crcHandler(w http.ResponseWriter, r *http.Request) {
+if r.Method != "PUT" {
+http.Error(w, "PUT required.", 400)
+return
+}

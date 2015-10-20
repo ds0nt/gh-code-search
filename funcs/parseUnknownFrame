@@ -1,0 +1,3 @@
+func parseUnknownFrame(fh FrameHeader, p []byte) (Frame, error) {
+return &UnknownFrame{fh, p}, nil
+}

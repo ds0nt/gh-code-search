@@ -1,0 +1,80 @@
+func TestUnmarshalXMLValue(t *testing.T) {
+testCases := []struct {
+desc    string
+input   string
+wantVal string
+}{{
+desc:    "simple char data",
+input:   "<root>foo</root>",
+wantVal: "foo",
+}, {
+desc:    "empty element",
+input:   "<root><foo/></root>",
+wantVal: "<foo/>",
+}, {
+desc:    "preserve namespace",
+input:   `<root><foo xmlns="bar"/></root>`,
+wantVal: `<foo xmlns="bar"/>`,
+}, {
+desc:    "preserve root element namespace",
+input:   `<root xmlns:bar="bar"><bar:foo/></root>`,
+wantVal: `<foo xmlns="bar"/>`,
+}, {
+desc:    "preserve whitespace",
+input:   "<root>  t </root>",
+wantVal: "  t ",
+}, {
+desc:    "preserve mixed content",
+input:   `<root xmlns="bar">  <foo>a<bam xmlns="baz"/> </foo> </root>`,
+wantVal: `  <foo xmlns="bar">a<bam xmlns="baz"/> </foo> `,
+}, {
+desc: "section 9.2",
+input: `` +
+`<Z:Authors xmlns:Z="http://ns.example.com/z/">` +
+`  <Z:Author>Jim Whitehead</Z:Author>` +
+`  <Z:Author>Roy Fielding</Z:Author>` +
+`</Z:Authors>`,
+wantVal: `` +
+`  <Author xmlns="http://ns.example.com/z/">Jim Whitehead</Author>` +
+`  <Author xmlns="http://ns.example.com/z/">Roy Fielding</Author>`,
+}, {
+desc: "section 4.3.1 (mixed content)",
+input: `` +
+`<x:author ` +
+`    xmlns:x='http://example.com/ns' ` +
+`    xmlns:D="DAV:">` +
+`  <x:name>Jane Doe</x:name>` +
+`  <!-- Jane's contact info -->` +
+`  <x:uri type='email'` +
+`         added='2005-11-26'>mailto:jane.doe@example.com</x:uri>` +
+`  <x:uri type='web'` +
+`         added='2005-11-27'>http://www.example.com</x:uri>` +
+`  <x:notes xmlns:h='http://www.w3.org/1999/xhtml'>` +
+`    Jane has been working way <h:em>too</h:em> long on the` +
+`    long-awaited revision of <![CDATA[<RFC2518>]]>.` +
+`  </x:notes>` +
+`</x:author>`,
+wantVal: `` +
+`  <name xmlns="http://example.com/ns">Jane Doe</name>` +
+`  ` +
+`  <uri type='email'` +
+`       xmlns="http://example.com/ns" ` +
+`       added='2005-11-26'>mailto:jane.doe@example.com</uri>` +
+`  <uri added='2005-11-27'` +
+`       type='web'` +
+`       xmlns="http://example.com/ns">http://www.example.com</uri>` +
+`  <notes xmlns="http://example.com/ns" ` +
+`         xmlns:h="http://www.w3.org/1999/xhtml">` +
+`    Jane has been working way <h:em>too</h:em> long on the` +
+`    long-awaited revision of &lt;RFC2518&gt;.` +
+`  </notes>`,
+}}
+
+var n xmlNormalizer
+for _, tc := range testCases {
+d := xml.NewDecoder(strings.NewReader(tc.input))
+var v xmlValue
+if err := d.Decode(&v); err != nil {
+t.Errorf("%s: got error %v, want nil", tc.desc, err)
+continue
+}

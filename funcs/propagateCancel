@@ -1,0 +1,4 @@
+func propagateCancel(parent Context, child canceler) {
+if parent.Done() == nil {
+return // parent is never canceled
+}

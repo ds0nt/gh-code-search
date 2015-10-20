@@ -1,0 +1,3 @@
+func removeSpace(s string) string {
+return strings.Replace(s, " ", "", -1)
+}

@@ -1,0 +1,9 @@
+func PublicSuffix(domain string) (publicSuffix string, icann bool) {
+lo, hi := uint32(0), uint32(numTLD)
+s, suffix, wildcard := domain, len(domain), false
+loop:
+for {
+dot := strings.LastIndex(s, ".")
+if wildcard {
+suffix = 1 + dot
+}

@@ -1,0 +1,5 @@
+func Dial(network, addr string) (*Client, error) {
+text, err := textproto.Dial(network, addr)
+if err != nil {
+return nil, err
+}

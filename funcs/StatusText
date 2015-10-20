@@ -1,0 +1,13 @@
+func StatusText(code int) string {
+switch code {
+case StatusMulti:
+return "Multi-Status"
+case StatusUnprocessableEntity:
+return "Unprocessable Entity"
+case StatusLocked:
+return "Locked"
+case StatusFailedDependency:
+return "Failed Dependency"
+case StatusInsufficientStorage:
+return "Insufficient Storage"
+}

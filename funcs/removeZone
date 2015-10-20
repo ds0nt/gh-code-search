@@ -1,0 +1,4 @@
+func removeZone(host string) string {
+if !strings.HasPrefix(host, "[") {
+return host
+}

@@ -1,0 +1,3 @@
+func NewMinuteHourSeries(f func() Observable) *MinuteHourSeries {
+return NewMinuteHourSeriesWithClock(f, defaultClockInstance)
+}

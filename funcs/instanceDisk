@@ -1,0 +1,14 @@
+func instanceDisk(svc *compute.Service) *compute.AttachedDisk {
+const imageURL = "https://www.googleapis.com/compute/v1/projects/coreos-cloud/global/images/coreos-stable-444-5-0-v20141016"
+diskName := *instName + "-disk"
+
+return &compute.AttachedDisk{
+AutoDelete: true,
+Boot:       true,
+Type:       "PERSISTENT",
+InitializeParams: &compute.AttachedDiskInitializeParams{
+DiskName:    diskName,
+SourceImage: imageURL,
+DiskSizeGb:  50,
+},
+}

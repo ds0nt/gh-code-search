@@ -1,0 +1,6 @@
+func escape(w writer, s string) error {
+i := strings.IndexAny(s, escapedChars)
+for i != -1 {
+if _, err := w.WriteString(s[:i]); err != nil {
+return err
+}

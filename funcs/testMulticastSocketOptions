@@ -1,0 +1,6 @@
+func testMulticastSocketOptions(t *testing.T, c testIPv6MulticastConn, ifi *net.Interface, grp net.Addr) {
+const hoplim = 255
+if err := c.SetMulticastHopLimit(hoplim); err != nil {
+t.Error(err)
+return
+}

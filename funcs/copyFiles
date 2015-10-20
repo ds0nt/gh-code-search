@@ -1,0 +1,4 @@
+func copyFiles(fs FileSystem, src, dst string, overwrite bool, depth int, recursion int) (status int, err error) {
+if recursion == 1000 {
+return http.StatusInternalServerError, errRecursionTooDeep
+}

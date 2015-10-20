@@ -1,0 +1,8 @@
+func TestBufferRead(t *testing.T) {
+for i, tt := range bufferReadTests {
+read := make([]byte, tt.read)
+n, err := tt.buf.Read(read)
+if n != tt.wn {
+t.Errorf("#%d: wn = %d want %d", i, n, tt.wn)
+continue
+}

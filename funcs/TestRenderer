@@ -1,0 +1,81 @@
+func TestRenderer(t *testing.T) {
+nodes := [...]*Node{
+0: {
+Type: ElementNode,
+Data: "html",
+},
+1: {
+Type: ElementNode,
+Data: "head",
+},
+2: {
+Type: ElementNode,
+Data: "body",
+},
+3: {
+Type: TextNode,
+Data: "0<1",
+},
+4: {
+Type: ElementNode,
+Data: "p",
+Attr: []Attribute{
+{
+Key: "id",
+Val: "A",
+},
+{
+Key: "foo",
+Val: `abc"def`,
+},
+},
+},
+5: {
+Type: TextNode,
+Data: "2",
+},
+6: {
+Type: ElementNode,
+Data: "b",
+Attr: []Attribute{
+{
+Key: "empty",
+Val: "",
+},
+},
+},
+7: {
+Type: TextNode,
+Data: "3",
+},
+8: {
+Type: ElementNode,
+Data: "i",
+Attr: []Attribute{
+{
+Key: "backslash",
+Val: ``,
+},
+},
+},
+9: {
+Type: TextNode,
+Data: "&4",
+},
+10: {
+Type: TextNode,
+Data: "5",
+},
+11: {
+Type: ElementNode,
+Data: "blockquote",
+},
+12: {
+Type: ElementNode,
+Data: "br",
+},
+13: {
+Type: TextNode,
+Data: "6",
+},
+}

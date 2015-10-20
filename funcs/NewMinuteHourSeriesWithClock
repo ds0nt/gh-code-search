@@ -1,0 +1,6 @@
+func NewMinuteHourSeriesWithClock(f func() Observable, clock Clock) *MinuteHourSeries {
+ts := new(MinuteHourSeries)
+ts.timeSeries.init(minuteHourSeriesResolutions, f,
+minuteHourSeriesNumBuckets, clock)
+return ts
+}

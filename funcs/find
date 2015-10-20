@@ -1,0 +1,5 @@
+func find(ss []string, fs FileSystem, name string) ([]string, error) {
+stat, err := fs.Stat(name)
+if err != nil {
+return nil, err
+}

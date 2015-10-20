@@ -1,0 +1,12 @@
+func TestEncodeToken(t *testing.T) {
+loop:
+for i, tt := range encodeTokenTests {
+var buf bytes.Buffer
+enc := NewEncoder(&buf)
+var err error
+for j, tok := range tt.toks {
+err = enc.EncodeToken(tok)
+if err != nil && j < len(tt.toks)-1 {
+t.Errorf("#%d %s token #%d: %v", i, tt.desc, j, err)
+continue loop
+}

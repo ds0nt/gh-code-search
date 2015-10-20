@@ -1,0 +1,12 @@
+func settingByName(name string) (http2.SettingID, bool) {
+for _, sid := range [...]http2.SettingID{
+http2.SettingHeaderTableSize,
+http2.SettingEnablePush,
+http2.SettingMaxConcurrentStreams,
+http2.SettingInitialWindowSize,
+http2.SettingMaxFrameSize,
+http2.SettingMaxHeaderListSize,
+} {
+if strings.EqualFold(sid.String(), name) {
+return sid, true
+}

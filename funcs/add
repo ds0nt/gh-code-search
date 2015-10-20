@@ -1,0 +1,4 @@
+func add(h *histogram, times int, val int64) {
+for i := 0; i < times; i++ {
+h.addMeasurement(val)
+}

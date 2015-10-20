@@ -1,0 +1,4 @@
+func jsonMarshal(v interface{}) (msg []byte, payloadType byte, err error) {
+msg, err = json.Marshal(v)
+return msg, TextFrame, err
+}

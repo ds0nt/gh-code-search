@@ -1,0 +1,9 @@
+func encodeHeaderNoImplicit(t *testing.T, headers ...string) []byte {
+var buf bytes.Buffer
+enc := hpack.NewEncoder(&buf)
+for len(headers) > 0 {
+k, v := headers[0], headers[1]
+headers = headers[2:]
+if err := enc.WriteField(hpack.HeaderField{Name: k, Value: v}); err != nil {
+t.Fatalf("HPACK encoding error for %q/%q: %v", k, v, err)
+}

@@ -1,0 +1,4 @@
+func parseRSTStreamFrame(fh FrameHeader, p []byte) (Frame, error) {
+if len(p) != 4 {
+return nil, ConnectionError(ErrCodeFrameSize)
+}

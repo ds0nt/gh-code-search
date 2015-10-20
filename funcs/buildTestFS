@@ -1,0 +1,12 @@
+func buildTestFS(buildfs []string) (FileSystem, error) {
+// TODO: Could this be merged with the build logic in TestFS?
+
+fs := NewMemFS()
+for _, b := range buildfs {
+op := strings.Split(b, " ")
+switch op[0] {
+case "mkdir":
+err := fs.Mkdir(op[1], os.ModeDir|0777)
+if err != nil {
+return nil, err
+}

@@ -1,0 +1,4 @@
+func htmlIntegrationPoint(n *Node) bool {
+if n.Type != ElementNode {
+return false
+}

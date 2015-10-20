@@ -1,0 +1,14 @@
+func TestDecodeEncode(t *testing.T) {
+var in, out bytes.Buffer
+in.WriteString(`<?xml version="1.0" encoding="UTF-8"?>
+<?Target Instruction?>
+<root>
+</root>
+`)
+dec := NewDecoder(&in)
+enc := NewEncoder(&out)
+for tok, err := dec.Token(); err == nil; tok, err = dec.Token() {
+err = enc.EncodeToken(tok)
+if err != nil {
+t.Fatalf("enc.EncodeToken: Unable to encode token (%#v), %v", tok, err)
+}

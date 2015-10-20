@@ -1,0 +1,6 @@
+func TestMarshalFlush(t *testing.T) {
+var buf bytes.Buffer
+enc := NewEncoder(&buf)
+if err := enc.EncodeToken(CharData("hello world")); err != nil {
+t.Fatalf("enc.EncodeToken: %v", err)
+}

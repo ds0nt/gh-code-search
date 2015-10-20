@@ -1,0 +1,8 @@
+func slowPublicSuffix(domain string) string {
+match := func(rulePart, domainPart string) bool {
+switch rulePart[0] {
+case '*':
+return true
+case '!':
+return rulePart[1:] == domainPart
+}

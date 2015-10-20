@@ -1,0 +1,6 @@
+func TestSlowPublicSuffix(t *testing.T) {
+for _, tc := range publicSuffixTestCases {
+got := slowPublicSuffix(tc.domain)
+if got != tc.want {
+t.Errorf("%q: got %q, want %q", tc.domain, got, tc.want)
+}

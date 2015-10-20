@@ -1,0 +1,8 @@
+func adjustStreamPriority(streams map[uint32]*stream, streamID uint32, priority PriorityParam) {
+st, ok := streams[streamID]
+if !ok {
+// TODO: not quite correct (this streamID might
+// already exist in the dep tree, but be closed), but
+// close enough for now.
+return
+}

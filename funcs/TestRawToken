@@ -1,0 +1,5 @@
+func TestRawToken(t *testing.T) {
+d := NewDecoder(strings.NewReader(testInput))
+d.Entity = testEntity
+testRawToken(t, d, testInput, rawTokens)
+}

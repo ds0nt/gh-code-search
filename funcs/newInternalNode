@@ -1,0 +1,3 @@
+func newInternalNode() *node {
+return &node{children: make([]*node, 256)}
+}

@@ -1,0 +1,4 @@
+func encodeTypeByte(indexing, sensitive bool) byte {
+if sensitive {
+return 0x10
+}

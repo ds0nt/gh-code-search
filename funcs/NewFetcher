@@ -1,0 +1,5 @@
+func NewFetcher(domain string) *Fetcher {
+return &Fetcher{
+domain,
+trace.NewEventLog("mypkg.Fetcher", domain),
+}

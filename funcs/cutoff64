@@ -1,0 +1,4 @@
+func cutoff64(base int) uint64 {
+if base < 2 {
+return 0
+}

@@ -1,0 +1,4 @@
+func parseGoAwayFrame(fh FrameHeader, p []byte) (Frame, error) {
+if fh.StreamID != 0 {
+return nil, ConnectionError(ErrCodeProtocol)
+}

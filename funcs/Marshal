@@ -1,0 +1,5 @@
+func Marshal(v interface{}) ([]byte, error) {
+var b bytes.Buffer
+if err := NewEncoder(&b).Encode(v); err != nil {
+return nil, err
+}

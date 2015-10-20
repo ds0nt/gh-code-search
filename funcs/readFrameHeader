@@ -1,0 +1,5 @@
+func readFrameHeader(buf []byte, r io.Reader) (FrameHeader, error) {
+_, err := io.ReadFull(r, buf[:frameHeaderLen])
+if err != nil {
+return FrameHeader{}, err
+}

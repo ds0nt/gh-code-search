@@ -1,0 +1,10 @@
+func registerHandlers() {
+tiles := newGopherTilesHandler()
+
+mux2 := http.NewServeMux()
+http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+if r.TLS == nil {
+if r.URL.Path == "/gophertiles" {
+tiles.ServeHTTP(w, r)
+return
+}

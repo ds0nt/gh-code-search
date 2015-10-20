@@ -1,0 +1,14 @@
+func TestUnescapeEscape(t *testing.T) {
+ss := []string{
+``,
+`abc def`,
+`a & b`,
+`a&amp;b`,
+`a &amp b`,
+`&quot;`,
+`"`,
+`"<&>"`,
+`&quot;&lt;&amp;&gt;&quot;`,
+`3&5==1 && 0<1, "0&lt;1", a+acute=&aacute;`,
+`The special characters are: <, >, &, ' and "`,
+}

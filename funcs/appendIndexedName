@@ -1,0 +1,8 @@
+func appendIndexedName(dst []byte, f HeaderField, i uint64, indexing bool) []byte {
+first := len(dst)
+var n byte
+if indexing {
+n = 6
+} else {
+n = 4
+}

@@ -1,0 +1,7 @@
+func copyValue(dst reflect.Value, src []byte) (err error) {
+dst0 := dst
+
+if dst.Kind() == reflect.Ptr {
+if dst.IsNil() {
+dst.Set(reflect.New(dst.Type().Elem()))
+}

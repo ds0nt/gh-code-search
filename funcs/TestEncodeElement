@@ -1,0 +1,8 @@
+func TestEncodeElement(t *testing.T) {
+for idx, test := range encodeElementTests {
+var buf bytes.Buffer
+enc := NewEncoder(&buf)
+err := enc.EncodeElement(test.value, test.start)
+if err != nil {
+t.Fatalf("enc.EncodeElement: %v", err)
+}

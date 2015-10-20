@@ -1,0 +1,11 @@
+func textIM(p *parser) bool {
+switch p.tok.Type {
+case ErrorToken:
+p.oe.pop()
+case TextToken:
+d := p.tok.Data
+if n := p.oe.top(); n.DataAtom == a.Textarea && n.FirstChild == nil {
+// Ignore a newline at the start of a <textarea> block.
+if d != "" && d[0] == 'r' {
+d = d[1:]
+}

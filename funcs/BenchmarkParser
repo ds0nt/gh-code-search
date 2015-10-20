@@ -1,0 +1,5 @@
+func BenchmarkParser(b *testing.B) {
+buf, err := ioutil.ReadFile("testdata/go1.html")
+if err != nil {
+b.Fatalf("could not read testdata/go1.html: %v", err)
+}

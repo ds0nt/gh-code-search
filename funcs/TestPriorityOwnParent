@@ -1,0 +1,6 @@
+func TestPriorityOwnParent(t *testing.T) {
+streams := make(map[uint32]*stream)
+a := &stream{
+parent: nil,
+weight: 16,
+}

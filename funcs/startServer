@@ -1,0 +1,8 @@
+func startServer() {
+http.Handle("/echo", Handler(echoServer))
+http.Handle("/count", Handler(countServer))
+http.Handle("/ctrldata", Handler(ctrlAndDataServer))
+subproto := Server{
+Handshake: subProtocolHandshake,
+Handler:   Handler(subProtoServer),
+}

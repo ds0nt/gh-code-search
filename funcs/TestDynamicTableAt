@@ -1,0 +1,6 @@
+func TestDynamicTableAt(t *testing.T) {
+d := NewDecoder(4096, nil)
+at := d.mustAt
+if got, want := at(2), (pair(":method", "GET")); got != want {
+t.Errorf("at(2) = %v; want %v", got, want)
+}

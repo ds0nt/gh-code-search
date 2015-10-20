@@ -1,0 +1,3 @@
+func newControlMessage(opt *rawOpt) (oob []byte) {
+return nil
+}

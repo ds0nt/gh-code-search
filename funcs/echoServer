@@ -1,0 +1,4 @@
+func echoServer(ws *Conn) {
+defer ws.Close()
+io.Copy(ws, ws)
+}

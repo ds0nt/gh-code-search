@@ -1,0 +1,4 @@
+func bucketBoundary(bucket uint8) int64 {
+if bucket == 0 {
+return 0
+}

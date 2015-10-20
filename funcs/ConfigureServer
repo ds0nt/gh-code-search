@@ -1,0 +1,4 @@
+func ConfigureServer(s *http.Server, conf *Server) {
+if conf == nil {
+conf = new(Server)
+}

@@ -1,0 +1,4 @@
+func FromContext(ctx context.Context) (tr Trace, ok bool) {
+tr, ok = ctx.Value(contextKey).(Trace)
+return
+}

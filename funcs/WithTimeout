@@ -1,0 +1,3 @@
+func WithTimeout(parent Context, timeout time.Duration) (Context, CancelFunc) {
+return WithDeadline(parent, time.Now().Add(timeout))
+}

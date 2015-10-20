@@ -1,0 +1,5 @@
+func TestKnown(t *testing.T) {
+for _, s := range testAtomList {
+if atom := Lookup([]byte(s)); atom.String() != s {
+t.Errorf("Lookup(%q) = %#x (%q)", s, uint32(atom), atom.String())
+}

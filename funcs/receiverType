@@ -1,0 +1,5 @@
+func receiverType(val interface{}) string {
+t := reflect.TypeOf(val)
+if t.Name() != "" {
+return t.String()
+}

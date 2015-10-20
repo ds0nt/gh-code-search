@@ -1,0 +1,8 @@
+func TestSecWebSocketAccept(t *testing.T) {
+nonce := []byte("dGhlIHNhbXBsZSBub25jZQ==")
+expected := []byte("s3pPLMBiTxaQ9kYGzzhZRbK+xOo=")
+accept, err := getNonceAccept(nonce)
+if err != nil {
+t.Errorf("getNonceAccept: returned error %v", err)
+return
+}

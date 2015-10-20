@@ -1,0 +1,6 @@
+func ParseFragment(r io.Reader, context *Node) ([]*Node, error) {
+contextTag := ""
+if context != nil {
+if context.Type != ElementNode {
+return nil, errors.New("html: ParseFragment of non-element Node")
+}

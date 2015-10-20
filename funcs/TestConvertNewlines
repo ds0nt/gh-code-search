@@ -1,0 +1,20 @@
+func TestConvertNewlines(t *testing.T) {
+testCases := map[string]string{
+"MacrDOSrnUnixn":    "MacnDOSnUnixn",
+"UnixnMacrDOSrn":    "UnixnMacnDOSn",
+"DOSrnDOSrnDOSrn": "DOSnDOSnDOSn",
+"":         "",
+"n":       "n",
+"nr":     "nn",
+"r":       "n",
+"rn":     "n",
+"rnn":   "nn",
+"rnr":   "nn",
+"rnrn": "nn",
+"rr":     "nn",
+"rrn":   "nn",
+"rrnn": "nnn",
+"rrrn": "nnn",
+"r n":    "n n",
+"xyz":      "xyz",
+}

@@ -1,0 +1,5 @@
+func TestUnmarshalWithoutNameType(t *testing.T) {
+var x TestThree
+if err := Unmarshal([]byte(withoutNameTypeData), &x); err != nil {
+t.Fatalf("Unmarshal: %s", err)
+}

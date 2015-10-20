@@ -1,0 +1,17 @@
+func inTableBodyIM(p *parser) bool {
+switch p.tok.Type {
+case StartTagToken:
+switch p.tok.DataAtom {
+case a.Tr:
+p.clearStackToContext(tableBodyScope)
+p.addElement()
+p.im = inRowIM
+return true
+case a.Td, a.Th:
+p.parseImpliedToken(StartTagToken, a.Tr, a.Tr.String())
+return false
+case a.Caption, a.Col, a.Colgroup, a.Tbody, a.Tfoot, a.Thead:
+if p.popUntil(tableScope, a.Tbody, a.Thead, a.Tfoot) {
+p.im = inTableIM
+return false
+}

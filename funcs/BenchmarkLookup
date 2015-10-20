@@ -1,0 +1,6 @@
+func BenchmarkLookup(b *testing.B) {
+sortedTable := make([]string, 0, len(table))
+for _, a := range table {
+if a != 0 {
+sortedTable = append(sortedTable, a.String())
+}

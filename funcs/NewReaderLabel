@@ -1,0 +1,5 @@
+func NewReaderLabel(label string, input io.Reader) (io.Reader, error) {
+e, _ := Lookup(label)
+if e == nil {
+return nil, fmt.Errorf("unsupported charset: %q", label)
+}

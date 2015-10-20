@@ -1,0 +1,10 @@
+func TestMemLSNonCanonicalRoot(t *testing.T) {
+now := time.Unix(0, 0)
+m := NewMemLS().(*memLS)
+token, err := m.Create(now, LockDetails{
+Root:     "/foo/./bar//",
+Duration: 1 * time.Second,
+})
+if err != nil {
+t.Fatalf("Create: %v", err)
+}

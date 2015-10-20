@@ -1,0 +1,6 @@
+func TestFromMeta(t *testing.T) {
+for _, tc := range metaTestCases {
+got := fromMetaElement(tc.meta)
+if got != tc.want {
+t.Errorf("%q: got %q, want %q", tc.meta, got, tc.want)
+}

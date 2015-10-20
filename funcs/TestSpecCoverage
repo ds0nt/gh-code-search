@@ -1,0 +1,4 @@
+func TestSpecCoverage(t *testing.T) {
+if !*coverSpec {
+t.Skip()
+}

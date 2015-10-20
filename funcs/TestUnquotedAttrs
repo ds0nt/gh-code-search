@@ -1,0 +1,8 @@
+func TestUnquotedAttrs(t *testing.T) {
+data := "<tag attr=azAZ09:-_t>"
+d := NewDecoder(strings.NewReader(data))
+d.Strict = false
+token, err := d.Token()
+if _, ok := err.(*SyntaxError); ok {
+t.Errorf("Unexpected error: %v", err)
+}

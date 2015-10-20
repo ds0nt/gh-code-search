@@ -1,0 +1,5 @@
+func DialConfig(config *Config) (ws *Conn, err error) {
+var client net.Conn
+if config.Location == nil {
+return nil, &DialError{config, ErrBadWebSocketLocation}
+}

@@ -1,0 +1,8 @@
+func NewMemFS() FileSystem {
+return &memFS{
+root: memFSNode{
+children: make(map[string]*memFSNode),
+mode:     0660 | os.ModeDir,
+modTime:  time.Now(),
+},
+}

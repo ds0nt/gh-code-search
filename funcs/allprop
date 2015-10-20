@@ -1,0 +1,5 @@
+func allprop(fs FileSystem, ls LockSystem, name string, include []xml.Name) ([]Propstat, error) {
+pnames, err := propnames(fs, ls, name)
+if err != nil {
+return nil, err
+}

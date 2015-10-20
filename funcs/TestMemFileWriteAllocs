@@ -1,0 +1,6 @@
+func TestMemFileWriteAllocs(t *testing.T) {
+fs := NewMemFS()
+f, err := fs.OpenFile("/xxx", os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0666)
+if err != nil {
+t.Fatalf("OpenFile: %v", err)
+}

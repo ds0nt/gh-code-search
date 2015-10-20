@@ -1,0 +1,7 @@
+func TestBufferWrite(t *testing.T) {
+for i, tt := range bufferWriteTests {
+n, err := tt.buf.Write(make([]byte, tt.write))
+if n != tt.wn {
+t.Errorf("#%d: wrote %d bytes; want %d", i, n, tt.wn)
+continue
+}

@@ -1,0 +1,7 @@
+func TestMemFSRoot(t *testing.T) {
+fs := NewMemFS()
+for i := 0; i < 5; i++ {
+stat, err := fs.Stat("/")
+if err != nil {
+t.Fatalf("i=%d: Stat: %v", i, err)
+}

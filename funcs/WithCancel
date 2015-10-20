@@ -1,0 +1,5 @@
+func WithCancel(parent Context) (ctx Context, cancel CancelFunc) {
+c := newCancelCtx(parent)
+propagateCancel(parent, &c)
+return &c, func() { c.cancel(true, Canceled) }
+}

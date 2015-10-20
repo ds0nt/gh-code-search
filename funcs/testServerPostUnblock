@@ -1,0 +1,25 @@
+func testServerPostUnblock(t *testing.T,
+handler func(http.ResponseWriter, *http.Request) error,
+fn func(*serverTester),
+checkErr func(error),
+otherHeaders ...string) {
+inHandler := make(chan bool)
+errc := make(chan error, 1)
+st := newServerTester(t, func(w http.ResponseWriter, r *http.Request) {
+inHandler <- true
+errc <- handler(w, r)
+})
+st.greet()
+st.writeHeaders(HeadersFrameParam{
+StreamID:      1,
+BlockFragment: st.encodeHeader(append([]string{":method", "POST"}, otherHeaders...)...),
+EndStream:     false, // keep it open
+EndHeaders:    true,
+})
+<-inHandler
+fn(st)
+select {
+case err := <-errc:
+if checkErr != nil {
+checkErr(err)
+}

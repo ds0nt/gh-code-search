@@ -1,0 +1,5 @@
+func generateMaskingKey() (maskingKey []byte, err error) {
+maskingKey = make([]byte, 4)
+if _, err = io.ReadFull(rand.Reader, maskingKey); err != nil {
+return
+}

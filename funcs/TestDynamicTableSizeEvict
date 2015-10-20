@@ -1,0 +1,5 @@
+func TestDynamicTableSizeEvict(t *testing.T) {
+d := NewDecoder(4096, nil)
+if want := uint32(0); d.dynTab.size != want {
+t.Fatalf("size = %d; want %d", d.dynTab.size, want)
+}

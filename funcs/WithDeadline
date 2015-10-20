@@ -1,0 +1,5 @@
+func WithDeadline(parent Context, deadline time.Time) (Context, CancelFunc) {
+if cur, ok := parent.Deadline(); ok && cur.Before(deadline) {
+// The current deadline is already sooner than the new one.
+return WithCancel(parent)
+}

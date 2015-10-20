@@ -1,0 +1,11 @@
+func ctrlAndDataServer(ws *Conn) {
+defer ws.Close()
+h := &testCtrlAndDataHandler{hybiFrameHandler: hybiFrameHandler{conn: ws}}
+ws.frameHandler = h
+
+go func() {
+for i := 0; ; i++ {
+var b []byte
+if i%2 != 0 { // with or without payload
+b = []byte(fmt.Sprintf("#%d-CONTROL-FRAME-FROM-SERVER", i))
+}

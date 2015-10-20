@@ -1,0 +1,4 @@
+func cmpXMLName(a, b xml.Name) bool {
+if a.Space != b.Space {
+return a.Space < b.Space
+}

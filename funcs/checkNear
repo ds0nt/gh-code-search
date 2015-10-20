@@ -1,0 +1,5 @@
+func checkNear(t *testing.T, o Observable, y, tolerance float64) {
+x := o.(*Float)
+if !isNear(x, y, tolerance) {
+t.Errorf("Wanted %g +- %g, got %g", y, tolerance, x.Value())
+}

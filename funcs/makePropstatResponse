@@ -1,0 +1,5 @@
+func makePropstatResponse(href string, pstats []Propstat) *response {
+resp := response{
+Href:     []string{href},
+Propstat: make([]propstat, 0, len(pstats)),
+}

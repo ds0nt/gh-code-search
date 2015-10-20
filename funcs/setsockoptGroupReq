@@ -1,0 +1,5 @@
+func setsockoptGroupReq(fd int, opt *sockOpt, ifi *net.Interface, grp net.IP) error {
+var gr sysGroupReq
+if ifi != nil {
+gr.Interface = uint32(ifi.Index)
+}

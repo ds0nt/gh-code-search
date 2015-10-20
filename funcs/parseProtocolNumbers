@@ -1,0 +1,6 @@
+func parseProtocolNumbers(w io.Writer, r io.Reader) error {
+dec := xml.NewDecoder(r)
+var pn protocolNumbers
+if err := dec.Decode(&pn); err != nil {
+return err
+}

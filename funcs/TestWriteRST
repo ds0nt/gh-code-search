@@ -1,0 +1,9 @@
+func TestWriteRST(t *testing.T) {
+fr, buf := testFramer()
+var streamID uint32 = 1<<24 + 2<<16 + 3<<8 + 4
+var errCode uint32 = 7<<24 + 6<<16 + 5<<8 + 4
+fr.WriteRSTStream(streamID, ErrCode(errCode))
+const wantEnc = "x00x00x04x03x00x01x02x03x04x07x06x05x04"
+if buf.String() != wantEnc {
+t.Errorf("encoded as %q; want %q", buf.Bytes(), wantEnc)
+}

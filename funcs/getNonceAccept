@@ -1,0 +1,5 @@
+func getNonceAccept(nonce []byte) (expected []byte, err error) {
+h := sha1.New()
+if _, err = h.Write(nonce); err != nil {
+return
+}

@@ -1,0 +1,6 @@
+func printNode(w io.Writer, n *node) error {
+for _, c := range n.children {
+s := "---------------"
+if len(c.children) != 0 {
+s = fmt.Sprintf("n0x%04x-n0x%04x", c.firstChild, c.firstChild+len(c.children))
+}

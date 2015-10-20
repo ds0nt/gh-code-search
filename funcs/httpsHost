@@ -1,0 +1,4 @@
+func httpsHost() string {
+if *prod {
+return "http2.golang.org"
+}

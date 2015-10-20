@@ -1,0 +1,7 @@
+func fields(s string) ([]string, error) {
+var v []string
+i := 0
+for {
+for i < len(s) && (s[i] == ' ' || s[i] == 't') {
+i++
+}

@@ -1,0 +1,4 @@
+func NewText(text string) Text {
+return Text{
+Body: text,
+}

@@ -1,0 +1,9 @@
+func TestIsValidDirective(t *testing.T) {
+testOK := []string{
+"<>",
+"< < > >",
+"<!DOCTYPE '<' '>' '>' <!--nothing-->>",
+"<!DOCTYPE doc [ <!ELEMENT doc ANY> <!ELEMENT doc ANY> ]>",
+"<!DOCTYPE doc [ <!ELEMENT doc "ANY> '<' <!E" LEMENT '>' doc ANY> ]>",
+"<!DOCTYPE doc <!-- just>>>> a < comment --> [ <!ITEM anything> ] >",
+}

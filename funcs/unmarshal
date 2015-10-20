@@ -1,0 +1,9 @@
+func unmarshal(msg []byte, payloadType byte, v interface{}) (err error) {
+switch data := v.(type) {
+case *string:
+*data = string(msg)
+return nil
+case *[]byte:
+*data = msg
+return nil
+}

@@ -1,0 +1,5 @@
+func TestProcInstEncoding(t *testing.T) {
+for _, test := range procInstTests {
+if got := procInst("version", test.input); got != test.expect[0] {
+t.Errorf("procInst(version, %q) = %q; want %q", test.input, got, test.expect[0])
+}

@@ -1,0 +1,5 @@
+func TestHits(t *testing.T) {
+for _, a := range table {
+if a == 0 {
+continue
+}

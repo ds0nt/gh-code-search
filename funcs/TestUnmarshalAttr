@@ -1,0 +1,4 @@
+func TestUnmarshalAttr(t *testing.T) {
+type ParamVal struct {
+Int int `xml:"int,attr"`
+}

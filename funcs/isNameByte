@@ -1,0 +1,6 @@
+func isNameByte(c byte) bool {
+return 'A' <= c && c <= 'Z' ||
+'a' <= c && c <= 'z' ||
+'0' <= c && c <= '9' ||
+c == '_' || c == ':' || c == '.' || c == '-'
+}

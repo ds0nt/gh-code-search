@@ -1,0 +1,6 @@
+func TestTrailingRawToken(t *testing.T) {
+input := `<FOO></FOO>  `
+d := NewDecoder(strings.NewReader(input))
+var err error
+for _, err = d.RawToken(); err == nil; _, err = d.RawToken() {
+}

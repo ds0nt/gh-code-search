@@ -1,0 +1,11 @@
+func TestStandardDeviation(t *testing.T) {
+a := new(histogram)
+add(a, 10, 1<<4)
+add(a, 10, 1<<5)
+add(a, 10, 1<<6)
+stdDev := a.standardDeviation()
+const expected = 19.95
+
+if !isApproximate(stdDev, expected) {
+t.Errorf("StandardDeviation = %v WANT: %v", stdDev, expected)
+}

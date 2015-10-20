@@ -1,0 +1,7 @@
+func nodeLabel(i uint32) string {
+x := nodes[i]
+length := x & (1<<nodesBitsTextLength - 1)
+x >>= nodesBitsTextLength
+offset := x & (1<<nodesBitsTextOffset - 1)
+return text[offset : offset+length]
+}

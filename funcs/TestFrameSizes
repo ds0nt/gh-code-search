@@ -1,0 +1,5 @@
+func TestFrameSizes(t *testing.T) {
+// Catch people rearranging the FrameHeader fields.
+if got, want := int(unsafe.Sizeof(FrameHeader{})), 12; got != want {
+t.Errorf("FrameHeader size = %d; want %d", got, want)
+}

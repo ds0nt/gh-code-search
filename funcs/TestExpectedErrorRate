@@ -1,0 +1,15 @@
+func TestExpectedErrorRate(t *testing.T) {
+ts := new(TestTimeSeries)
+fake := new(mockClock)
+fake.Set(time.Now())
+ts.timeSeries.init(testResolutions, NewFloat, buckets, fake)
+for i := 1; i <= 61*61; i++ {
+fake.Set(fake.Time().Add(1 * time.Second))
+ob := Float(1)
+ts.AddWithTime(&ob, fake.Time())
+
+// The results should be accurate within one missing bucket (1/6) of the observations recorded.
+checkNear(t, ts.Latest(0, buckets), min(float64(i), 60), 10)
+checkNear(t, ts.Latest(1, buckets), min(float64(i), 600), 100)
+checkNear(t, ts.Latest(2, buckets), min(float64(i), 3600), 600)
+}

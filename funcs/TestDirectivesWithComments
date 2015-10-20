@@ -1,0 +1,8 @@
+func TestDirectivesWithComments(t *testing.T) {
+d := NewDecoder(strings.NewReader(directivesWithCommentsInput))
+
+for i, want := range directivesWithCommentsTokens {
+have, err := d.Token()
+if err != nil {
+t.Fatalf("token %d: unexpected error: %s", i, err)
+}

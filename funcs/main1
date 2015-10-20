@@ -1,0 +1,5 @@
+func main1() error {
+flag.Parse()
+if nodesBitsTextLength+nodesBitsTextOffset+nodesBitsICANN+nodesBitsChildren > 32 {
+return fmt.Errorf("not enough bits to encode the nodes table")
+}

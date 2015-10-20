@@ -1,0 +1,3 @@
+func pair(name, value string) HeaderField {
+return HeaderField{Name: name, Value: value}
+}

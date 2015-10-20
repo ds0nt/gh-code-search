@@ -1,0 +1,7 @@
+func findSupportedLock(fs FileSystem, ls LockSystem, name string, fi os.FileInfo) (string, error) {
+return `` +
+`<D:lockentry xmlns:D="DAV:">` +
+`<D:lockscope><D:exclusive/></D:lockscope>` +
+`<D:locktype><D:write/></D:locktype>` +
+`</D:lockentry>`, nil
+}

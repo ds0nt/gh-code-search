@@ -1,0 +1,6 @@
+func TestBucketingFunctions(t *testing.T) {
+for _, test := range bucketingTests {
+log := log2(test.in)
+if log != test.log {
+t.Errorf("log2 = %v WANT: %v", log, test.log)
+}

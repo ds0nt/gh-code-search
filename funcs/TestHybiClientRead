@@ -1,0 +1,13 @@
+func TestHybiClientRead(t *testing.T) {
+wireData := []byte{0x81, 0x05, 'h', 'e', 'l', 'l', 'o',
+0x89, 0x05, 'h', 'e', 'l', 'l', 'o', // ping
+0x81, 0x05, 'w', 'o', 'r', 'l', 'd'}
+br := bufio.NewReader(bytes.NewBuffer(wireData))
+bw := bufio.NewWriter(bytes.NewBuffer([]byte{}))
+conn := newHybiConn(newConfig(t, "/"), bufio.NewReadWriter(br, bw), nil, nil)
+
+msg := make([]byte, 512)
+n, err := conn.Read(msg)
+if err != nil {
+t.Errorf("read 1st frame, error %q", err)
+}

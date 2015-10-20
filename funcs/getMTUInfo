@@ -1,0 +1,3 @@
+func getMTUInfo(fd int, opt *sockOpt) (*net.Interface, int, error) {
+return nil, 0, errOpNoSupport
+}

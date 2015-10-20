@@ -1,0 +1,8 @@
+func identifier(s string) string {
+b := make([]byte, 0, len(s))
+cap := true
+for _, c := range s {
+if c == '-' {
+cap = true
+continue
+}

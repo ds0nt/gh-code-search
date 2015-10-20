@@ -1,0 +1,4 @@
+func covers(sec, sentences string) {
+loadSpecOnce.Do(loadSpec)
+defaultSpecCoverage.cover(sec, sentences)
+}

@@ -1,0 +1,10 @@
+func testFS(t *testing.T, fs FileSystem) {
+errStr := func(err error) string {
+switch {
+case os.IsExist(err):
+return "errExist"
+case os.IsNotExist(err):
+return "errNotExist"
+case err != nil:
+return "err"
+}

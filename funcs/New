@@ -1,0 +1,17 @@
+func New(family, title string) Trace {
+tr := newTrace()
+tr.ref()
+tr.Family, tr.Title = family, title
+tr.Start = time.Now()
+tr.events = make([]event, 0, maxEventsPerTrace)
+
+activeMu.RLock()
+s := activeTraces[tr.Family]
+activeMu.RUnlock()
+if s == nil {
+activeMu.Lock()
+s = activeTraces[tr.Family] // check again
+if s == nil {
+s = new(traceSet)
+activeTraces[tr.Family] = s
+}

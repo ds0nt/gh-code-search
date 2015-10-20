@@ -1,0 +1,19 @@
+func TestTransportAbortClosesPipes(t *testing.T) {
+shutdown := make(chan struct{})
+st := newServerTester(t,
+func(w http.ResponseWriter, r *http.Request) {
+w.(http.Flusher).Flush()
+<-shutdown
+},
+optOnlyServer,
+)
+defer st.Close()
+defer close(shutdown) // we must shutdown before st.Close() to avoid hanging
+
+done := make(chan struct{})
+requestMade := make(chan struct{})
+go func() {
+defer close(done)
+tr := &Transport{
+InsecureTLSDial: true,
+}

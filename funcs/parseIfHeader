@@ -1,0 +1,10 @@
+func parseIfHeader(httpHeader string) (h ifHeader, ok bool) {
+s := strings.TrimSpace(httpHeader)
+switch tokenType, _, _ := lex(s); tokenType {
+case '(':
+return parseNoTagLists(s)
+case angleTokenType:
+return parseTaggedLists(s)
+default:
+return ifHeader{}, false
+}

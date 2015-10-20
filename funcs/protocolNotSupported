@@ -1,0 +1,3 @@
+func protocolNotSupported(err error) bool {
+return false
+}

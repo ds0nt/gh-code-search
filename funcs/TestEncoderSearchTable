@@ -1,0 +1,28 @@
+func TestEncoderSearchTable(t *testing.T) {
+e := NewEncoder(nil)
+
+e.dynTab.add(pair("foo", "bar"))
+e.dynTab.add(pair("blake", "miz"))
+e.dynTab.add(pair(":method", "GET"))
+
+tests := []struct {
+hf        HeaderField
+wantI     uint64
+wantMatch bool
+}{
+// Name and Value match
+{pair("foo", "bar"), uint64(len(staticTable) + 3), true},
+{pair("blake", "miz"), uint64(len(staticTable) + 2), true},
+{pair(":method", "GET"), 2, true},
+
+// Only name match because Sensitive == true
+{HeaderField{":method", "GET", true}, 2, false},
+
+// Only Name matches
+{pair("foo", "..."), uint64(len(staticTable) + 3), false},
+{pair("blake", "..."), uint64(len(staticTable) + 2), false},
+{pair(":method", "..."), 2, false},
+
+// None match
+{pair("foo-", "bar"), 0, false},
+}

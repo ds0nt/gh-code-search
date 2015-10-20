@@ -1,0 +1,12 @@
+func render1(w writer, n *Node) error {
+// Render non-element nodes; these are the easy cases.
+switch n.Type {
+case ErrorNode:
+return errors.New("html: cannot render an ErrorNode node")
+case TextNode:
+return escape(w, n.Data)
+case DocumentNode:
+for c := n.FirstChild; c != nil; c = c.NextSibling {
+if err := render1(w, c); err != nil {
+return err
+}

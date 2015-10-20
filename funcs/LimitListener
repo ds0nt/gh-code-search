@@ -1,0 +1,3 @@
+func LimitListener(l net.Listener, n int) net.Listener {
+return &limitListener{l, make(chan struct{}, n)}
+}

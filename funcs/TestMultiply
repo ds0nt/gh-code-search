@@ -1,0 +1,8 @@
+func TestMultiply(t *testing.T) {
+var h histogram
+for i, test := range multiplyTests {
+h.addMeasurement(test.in)
+h.Multiply(test.ratio)
+if h.sum != test.expectedSum {
+t.Errorf("#%v: h.sum = %v WANT: %v", i, h.sum, test.expectedSum)
+}

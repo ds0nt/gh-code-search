@@ -1,0 +1,5 @@
+func resetHooks() {
+testHookOnPanicMu.Lock()
+testHookOnPanic = nil
+testHookOnPanicMu.Unlock()
+}

@@ -1,0 +1,3 @@
+func newBufferedWriter(w io.Writer) *bufferedWriter {
+return &bufferedWriter{w: w}
+}

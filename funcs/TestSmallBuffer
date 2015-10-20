@@ -1,0 +1,10 @@
+func TestSmallBuffer(t *testing.T) {
+// http://code.google.com/p/go/issues/detail?id=1145
+// Read should be able to handle reading a fragment of a frame.
+once.Do(startServer)
+
+// websocket.Dial()
+client, err := net.Dial("tcp", serverAddr)
+if err != nil {
+t.Fatal("dialing", err)
+}

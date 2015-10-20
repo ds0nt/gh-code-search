@@ -1,0 +1,12 @@
+func unescape(b []byte, attribute bool) []byte {
+for i, c := range b {
+if c == '&' {
+dst, src := unescapeEntity(b, i, i, attribute)
+for src < len(b) {
+c := b[src]
+if c == '&' {
+dst, src = unescapeEntity(b, dst, src, attribute)
+} else {
+b[dst] = c
+dst, src = dst+1, src+1
+}

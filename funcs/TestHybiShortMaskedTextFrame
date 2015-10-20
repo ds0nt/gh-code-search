@@ -1,0 +1,9 @@
+func TestHybiShortMaskedTextFrame(t *testing.T) {
+frameHeader := &hybiFrameHeader{Fin: true, OpCode: TextFrame,
+MaskingKey: []byte{0xcc, 0x55, 0x80, 0x20}}
+payload := []byte("hello")
+maskedPayload := []byte{0xa4, 0x30, 0xec, 0x4c, 0xa3}
+header := []byte{0x81, 0x85}
+header = append(header, frameHeader.MaskingKey...)
+testHybiFrame(t, header, payload, maskedPayload, frameHeader)
+}

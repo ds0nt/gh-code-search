@@ -1,0 +1,3 @@
+func NewTimeSeries(f func() Observable) *TimeSeries {
+return NewTimeSeriesWithClock(f, defaultClockInstance)
+}

@@ -1,0 +1,7 @@
+func marshal(v interface{}) (msg []byte, payloadType byte, err error) {
+switch data := v.(type) {
+case string:
+return []byte(data), TextFrame, nil
+case []byte:
+return data, BinaryFrame, nil
+}

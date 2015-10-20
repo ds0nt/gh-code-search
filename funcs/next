@@ -1,0 +1,6 @@
+func next(d *xml.Decoder) (xml.Token, error) {
+for {
+t, err := d.Token()
+if err != nil {
+return t, err
+}

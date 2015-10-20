@@ -1,0 +1,28 @@
+func TestDynamicTableSearch(t *testing.T) {
+dt := dynamicTable{}
+dt.setMaxSize(4096)
+
+dt.add(pair("foo", "bar"))
+dt.add(pair("blake", "miz"))
+dt.add(pair(":method", "GET"))
+
+tests := []struct {
+hf        HeaderField
+wantI     uint64
+wantMatch bool
+}{
+// Name and Value match
+{pair("foo", "bar"), 3, true},
+{pair(":method", "GET"), 1, true},
+
+// Only name match because of Sensitive == true
+{HeaderField{"blake", "miz", true}, 2, false},
+
+// Only Name matches
+{pair("foo", "..."), 3, false},
+{pair("blake", "..."), 2, false},
+{pair(":method", "..."), 1, false},
+
+// None match
+{pair("foo-", "bar"), 0, false},
+}

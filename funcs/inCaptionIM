@@ -1,0 +1,13 @@
+func inCaptionIM(p *parser) bool {
+switch p.tok.Type {
+case StartTagToken:
+switch p.tok.DataAtom {
+case a.Caption, a.Col, a.Colgroup, a.Tbody, a.Td, a.Tfoot, a.Thead, a.Tr:
+if p.popUntil(tableScope, a.Caption) {
+p.clearActiveFormattingElements()
+p.im = inTableIM
+return false
+} else {
+// Ignore the token.
+return true
+}

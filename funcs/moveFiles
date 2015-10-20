@@ -1,0 +1,6 @@
+func moveFiles(fs FileSystem, src, dst string, overwrite bool) (status int, err error) {
+created := false
+if _, err := fs.Stat(dst); err != nil {
+if !os.IsNotExist(err) {
+return http.StatusForbidden, err
+}

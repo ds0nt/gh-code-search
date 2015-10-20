@@ -1,0 +1,4 @@
+func icannStr(icann bool) string {
+if icann {
+return "I"
+}

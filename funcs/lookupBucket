@@ -1,0 +1,5 @@
+func lookupBucket(fam string, b int) *traceBucket {
+f := getFamily(fam, false)
+if f == nil || b < 0 || b >= len(f.Buckets) {
+return nil
+}

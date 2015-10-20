@@ -1,0 +1,11 @@
+func TestPercentileBoundary(t *testing.T) {
+a := new(histogram)
+add(a, 5, 1<<4)
+add(a, 10, 1<<6)
+add(a, 5, 1<<7)
+
+for _, test := range percentileTests {
+percentile := a.percentileBoundary(test.fraction)
+if percentile != test.expected {
+t.Errorf("h.PercentileBoundary (fraction=%v) = %v WANT: %v", test.fraction, percentile, test.expected)
+}

@@ -1,0 +1,7 @@
+func testWithProtocol(t *testing.T, subproto []string) (string, error) {
+once.Do(startServer)
+
+client, err := net.Dial("tcp", serverAddr)
+if err != nil {
+t.Fatal("dialing", err)
+}

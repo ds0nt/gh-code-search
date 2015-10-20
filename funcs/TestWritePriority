@@ -1,0 +1,51 @@
+func TestWritePriority(t *testing.T) {
+const streamID = 42
+tests := []struct {
+name      string
+priority  PriorityParam
+wantFrame *PriorityFrame
+}{
+{
+"not exclusive",
+PriorityParam{
+StreamDep: 2,
+Exclusive: false,
+Weight:    127,
+},
+&PriorityFrame{
+FrameHeader{
+valid:    true,
+StreamID: streamID,
+Type:     FramePriority,
+Length:   5,
+},
+PriorityParam{
+StreamDep: 2,
+Exclusive: false,
+Weight:    127,
+},
+},
+},
+
+{
+"exclusive",
+PriorityParam{
+StreamDep: 3,
+Exclusive: true,
+Weight:    77,
+},
+&PriorityFrame{
+FrameHeader{
+valid:    true,
+StreamID: streamID,
+Type:     FramePriority,
+Length:   5,
+},
+PriorityParam{
+StreamDep: 3,
+Exclusive: true,
+Weight:    77,
+},
+},
+},
+}

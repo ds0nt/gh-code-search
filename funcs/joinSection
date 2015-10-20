@@ -1,0 +1,5 @@
+func joinSection(sec []int) string {
+s := fmt.Sprintf("%d", sec[0])
+for _, n := range sec[1:] {
+s = fmt.Sprintf("%s.%d", s, n)
+}

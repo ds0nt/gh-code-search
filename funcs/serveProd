@@ -1,0 +1,6 @@
+func serveProd() error {
+errc := make(chan error, 2)
+go func() { errc <- http.ListenAndServe(":80", nil) }()
+go func() { errc <- serveProdTLS() }()
+return <-errc
+}

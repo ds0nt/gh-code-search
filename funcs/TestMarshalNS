@@ -1,0 +1,6 @@
+func TestMarshalNS(t *testing.T) {
+dst := Tables{"hello", "world"}
+data, err := Marshal(&dst)
+if err != nil {
+t.Fatalf("Marshal: %v", err)
+}

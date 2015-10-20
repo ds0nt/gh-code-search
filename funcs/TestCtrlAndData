@@ -1,0 +1,7 @@
+func TestCtrlAndData(t *testing.T) {
+once.Do(startServer)
+
+c, err := net.Dial("tcp", serverAddr)
+if err != nil {
+t.Fatal(err)
+}

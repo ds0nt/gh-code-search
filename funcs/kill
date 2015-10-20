@@ -1,0 +1,4 @@
+func kill(container string) {
+exec.Command("docker", "kill", container).Run()
+exec.Command("docker", "rm", container).Run()
+}

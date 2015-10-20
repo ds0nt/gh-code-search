@@ -1,0 +1,25 @@
+func TestMemLS(t *testing.T) {
+now := time.Unix(0, 0)
+m := NewMemLS().(*memLS)
+rng := rand.New(rand.NewSource(0))
+tokens := map[string]string{}
+nConfirm, nCreate, nRefresh, nUnlock := 0, 0, 0, 0
+const N = 2000
+
+for i := 0; i < N; i++ {
+name := lockTestNames[rng.Intn(len(lockTestNames))]
+duration := lockTestDurations[rng.Intn(len(lockTestDurations))]
+confirmed, unlocked := false, false
+
+// If the name was already locked, we randomly confirm/release, refresh
+// or unlock it. Otherwise, we create a lock.
+token := tokens[name]
+if token != "" {
+switch rng.Intn(3) {
+case 0:
+confirmed = true
+nConfirm++
+release, err := m.Confirm(now, name, "", Condition{Token: token})
+if err != nil {
+t.Fatalf("iteration #%d: Confirm %q: %v", i, name, err)
+}

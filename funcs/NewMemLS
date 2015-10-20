@@ -1,0 +1,6 @@
+func NewMemLS() LockSystem {
+return &memLS{
+byName:  make(map[string]*memLSNode),
+byToken: make(map[string]*memLSNode),
+gen:     uint64(time.Now().Unix()),
+}

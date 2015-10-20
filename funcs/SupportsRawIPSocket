@@ -1,0 +1,4 @@
+func SupportsRawIPSocket() (string, bool) {
+if os.Getuid() != 0 {
+return fmt.Sprintf("must be root on %s", runtime.GOOS), false
+}

@@ -1,0 +1,5 @@
+func TestMarshal(t *testing.T) {
+for idx, test := range marshalTests {
+if test.UnmarshalOnly {
+continue
+}

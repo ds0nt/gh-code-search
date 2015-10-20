@@ -1,0 +1,4 @@
+func newHandlerPuppet() *handlerPuppet {
+return &handlerPuppet{
+ch: make(chan puppetCommand),
+}

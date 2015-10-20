@@ -1,0 +1,3 @@
+func parseContinuationFrame(fh FrameHeader, p []byte) (Frame, error) {
+return &ContinuationFrame{fh, p}, nil
+}

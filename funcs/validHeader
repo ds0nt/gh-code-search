@@ -1,0 +1,4 @@
+func validHeader(v string) bool {
+if len(v) == 0 {
+return false
+}

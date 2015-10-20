@@ -1,0 +1,5 @@
+func propnames(fs FileSystem, ls LockSystem, name string) ([]xml.Name, error) {
+f, err := fs.OpenFile(name, os.O_RDONLY, 0)
+if err != nil {
+return nil, err
+}

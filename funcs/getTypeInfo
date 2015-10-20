@@ -1,0 +1,7 @@
+func getTypeInfo(typ reflect.Type) (*typeInfo, error) {
+tinfoLock.RLock()
+tinfo, ok := tinfoMap[typ]
+tinfoLock.RUnlock()
+if ok {
+return tinfo, nil
+}

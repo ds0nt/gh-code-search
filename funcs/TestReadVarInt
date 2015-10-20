@@ -1,0 +1,6 @@
+func TestReadVarInt(t *testing.T) {
+type res struct {
+i        uint64
+consumed int
+err      error
+}

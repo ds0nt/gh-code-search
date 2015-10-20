@@ -1,0 +1,4 @@
+func testFramer() (*Framer, *bytes.Buffer) {
+buf := new(bytes.Buffer)
+return NewFramer(buf, buf), buf
+}

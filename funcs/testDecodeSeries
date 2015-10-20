@@ -1,0 +1,7 @@
+func testDecodeSeries(t *testing.T, size uint32, steps []encAndWant) {
+d := NewDecoder(size, nil)
+for i, step := range steps {
+hf, err := d.DecodeFull(step.enc)
+if err != nil {
+t.Fatalf("Error at step index %d: %v", i, err)
+}

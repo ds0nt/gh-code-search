@@ -1,0 +1,7 @@
+func getActiveTraces(fam string) traceList {
+activeMu.RLock()
+s := activeTraces[fam]
+activeMu.RUnlock()
+if s == nil {
+return nil
+}

@@ -1,0 +1,5 @@
+func findDisplayName(fs FileSystem, ls LockSystem, name string, fi os.FileInfo) (string, error) {
+if slashClean(name) == "/" {
+// Hide the real name of a possibly prefixed root directory.
+return "", nil
+}

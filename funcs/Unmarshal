@@ -1,0 +1,3 @@
+func Unmarshal(data []byte, v interface{}) error {
+return NewDecoder(bytes.NewReader(data)).Decode(v)
+}

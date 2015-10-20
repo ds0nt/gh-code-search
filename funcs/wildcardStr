@@ -1,0 +1,4 @@
+func wildcardStr(wildcard bool) string {
+if wildcard {
+return "*"
+}

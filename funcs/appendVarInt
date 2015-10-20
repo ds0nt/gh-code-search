@@ -1,0 +1,5 @@
+func appendVarInt(dst []byte, n byte, i uint64) []byte {
+k := uint64((1 << n) - 1)
+if i < k {
+return append(dst, byte(i))
+}

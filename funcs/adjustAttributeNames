@@ -1,0 +1,5 @@
+func adjustAttributeNames(aa []Attribute, nameMap map[string]string) {
+for i := range aa {
+if newName, ok := nameMap[aa[i].Key]; ok {
+aa[i].Key = newName
+}

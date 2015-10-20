@@ -1,0 +1,6 @@
+func appendIndexed(dst []byte, i uint64) []byte {
+first := len(dst)
+dst = appendVarInt(dst, 7, i)
+dst[first] |= 0x80
+return dst
+}

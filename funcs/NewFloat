@@ -1,0 +1,4 @@
+func NewFloat() Observable {
+f := Float(0)
+return &f
+}

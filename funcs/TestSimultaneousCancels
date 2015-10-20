@@ -1,0 +1,13 @@
+func TestSimultaneousCancels(t *testing.T) {
+root, cancel := WithCancel(Background())
+m := map[Context]CancelFunc{root: cancel}
+q := []Context{root}
+// Create a tree of contexts.
+for len(q) != 0 && len(m) < 100 {
+parent := q[0]
+q = q[1:]
+for i := 0; i < 4; i++ {
+ctx, cancel := WithCancel(parent)
+m[ctx] = cancel
+q = append(q, ctx)
+}

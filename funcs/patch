@@ -1,0 +1,9 @@
+func patch(fs FileSystem, ls LockSystem, name string, patches []Proppatch) ([]Propstat, error) {
+conflict := false
+loop:
+for _, patch := range patches {
+for _, p := range patch.Props {
+if _, ok := liveProps[p.XMLName]; ok {
+conflict = true
+break loop
+}

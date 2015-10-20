@@ -1,0 +1,4 @@
+func EscapeString(s string) string {
+if strings.IndexAny(s, escapedChars) == -1 {
+return s
+}

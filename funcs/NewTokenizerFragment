@@ -1,0 +1,5 @@
+func NewTokenizerFragment(r io.Reader, contextTag string) *Tokenizer {
+z := &Tokenizer{
+r:   r,
+buf: make([]byte, 0, 4096),
+}

@@ -1,0 +1,5 @@
+func TestRace9796(t *testing.T) {
+type A struct{}
+type B struct {
+C []A `xml:"X>Y"`
+}

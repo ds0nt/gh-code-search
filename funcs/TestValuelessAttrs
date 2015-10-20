@@ -1,0 +1,7 @@
+func TestValuelessAttrs(t *testing.T) {
+tests := [][3]string{
+{"<p nowrap>", "p", "nowrap"},
+{"<p nowrap >", "p", "nowrap"},
+{"<input checked/>", "input", "checked"},
+{"<input checked />", "input", "checked"},
+}

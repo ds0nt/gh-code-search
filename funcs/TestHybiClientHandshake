@@ -1,0 +1,4 @@
+func TestHybiClientHandshake(t *testing.T) {
+type test struct {
+url, host string
+}

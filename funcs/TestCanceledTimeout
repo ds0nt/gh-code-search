@@ -1,0 +1,11 @@
+func TestCanceledTimeout(t *testing.T) {
+c, _ := WithTimeout(Background(), 200*time.Millisecond)
+o := otherContext{c}
+c, cancel := WithTimeout(o, 400*time.Millisecond)
+cancel()
+time.Sleep(100 * time.Millisecond) // let cancelation propagate
+select {
+case <-c.Done():
+default:
+t.Errorf("<-c.Done() blocked, but shouldn't have")
+}

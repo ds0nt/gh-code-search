@@ -1,0 +1,11 @@
+func TestResetLog(t *testing.T) {
+el := NewEventLog("foo", "bar")
+el.Printf("message")
+el.Errorf("error")
+el.Finish()
+
+el.(*eventLog).reset()
+
+if !reflect.DeepEqual(el, new(eventLog)) {
+t.Errorf("reset didn't clear all fields: %+v", el)
+}

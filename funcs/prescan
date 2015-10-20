@@ -1,0 +1,12 @@
+func prescan(content []byte) (e encoding.Encoding, name string) {
+z := html.NewTokenizer(bytes.NewReader(content))
+for {
+switch z.Next() {
+case html.ErrorToken:
+return nil, ""
+
+case html.StartTagToken, html.SelfClosingTagToken:
+tagName, hasAttr := z.TagName()
+if !bytes.Equal(tagName, []byte("meta")) {
+continue
+}

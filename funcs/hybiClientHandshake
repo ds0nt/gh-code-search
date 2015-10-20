@@ -1,0 +1,13 @@
+func hybiClientHandshake(config *Config, br *bufio.Reader, bw *bufio.Writer) (err error) {
+bw.WriteString("GET " + config.Location.RequestURI() + " HTTP/1.1rn")
+
+// According to RFC 6874, an HTTP client, proxy, or other
+// intermediary must remove any IPv6 zone identifier attached
+// to an outgoing URI.
+bw.WriteString("Host: " + removeZone(config.Location.Host) + "rn")
+bw.WriteString("Upgrade: websocketrn")
+bw.WriteString("Connection: Upgradern")
+nonce := generateNonce()
+if config.handshakeData != nil {
+nonce = []byte(config.handshakeData["key"])
+}

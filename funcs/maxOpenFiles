@@ -1,0 +1,2 @@
+func maxOpenFiles() int { return defaultMaxOpenFiles }
+

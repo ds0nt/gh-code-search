@@ -1,0 +1,6 @@
+func TestSyntax(t *testing.T) {
+for i := range xmlInput {
+d := NewDecoder(strings.NewReader(xmlInput[i]))
+var err error
+for _, err = d.Token(); err == nil; _, err = d.Token() {
+}

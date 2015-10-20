@@ -1,0 +1,11 @@
+func inCellIM(p *parser) bool {
+switch p.tok.Type {
+case StartTagToken:
+switch p.tok.DataAtom {
+case a.Caption, a.Col, a.Colgroup, a.Tbody, a.Td, a.Tfoot, a.Th, a.Thead, a.Tr:
+if p.popUntil(tableScope, a.Td, a.Th) {
+// Close the cell and reprocess.
+p.clearActiveFormattingElements()
+p.im = inRowIM
+return false
+}

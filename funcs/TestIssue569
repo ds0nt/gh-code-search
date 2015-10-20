@@ -1,0 +1,8 @@
+func TestIssue569(t *testing.T) {
+data := `<item><Field_a>abcd</Field_a></item>`
+var i item
+err := Unmarshal([]byte(data), &i)
+
+if err != nil || i.Field_a != "abcd" {
+t.Fatal("Expecting abcd")
+}

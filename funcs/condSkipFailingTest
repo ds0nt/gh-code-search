@@ -1,0 +1,4 @@
+func condSkipFailingTest(t *testing.T) {
+if !*knownFailing {
+t.Skip("Skipping known-failing test without --known_failing")
+}

@@ -1,0 +1,6 @@
+func freeEventLog(el *eventLog) {
+el.reset()
+select {
+case freeEventLogs <- el:
+default:
+}

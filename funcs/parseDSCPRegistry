@@ -1,0 +1,6 @@
+func parseDSCPRegistry(w io.Writer, r io.Reader) error {
+dec := xml.NewDecoder(r)
+var dr dscpRegistry
+if err := dec.Decode(&dr); err != nil {
+return err
+}

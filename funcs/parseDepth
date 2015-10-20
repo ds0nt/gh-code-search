@@ -1,0 +1,9 @@
+func parseDepth(s string) int {
+switch s {
+case "0":
+return 0
+case "1":
+return 1
+case "infinity":
+return infiniteDepth
+}

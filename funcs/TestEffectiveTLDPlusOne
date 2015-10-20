@@ -1,0 +1,6 @@
+func TestEffectiveTLDPlusOne(t *testing.T) {
+for _, tc := range eTLDPlusOneTestCases {
+got, _ := EffectiveTLDPlusOne(tc.domain)
+if got != tc.want {
+t.Errorf("%q: got %q, want %q", tc.domain, got, tc.want)
+}

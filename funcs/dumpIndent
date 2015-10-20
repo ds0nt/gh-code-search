@@ -1,0 +1,5 @@
+func dumpIndent(w io.Writer, level int) {
+io.WriteString(w, "| ")
+for i := 0; i < level; i++ {
+io.WriteString(w, "  ")
+}

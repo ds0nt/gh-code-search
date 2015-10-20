@@ -1,0 +1,17 @@
+func clockStreamHandler(w http.ResponseWriter, r *http.Request) {
+clientGone := w.(http.CloseNotifier).CloseNotify()
+w.Header().Set("Content-Type", "text/plain")
+ticker := time.NewTicker(1 * time.Second)
+defer ticker.Stop()
+fmt.Fprintf(w, "# ~1KB of junk to force browsers to start rendering immediately: n")
+io.WriteString(w, strings.Repeat("# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxn", 13))
+
+for {
+fmt.Fprintf(w, "%vn", time.Now())
+w.(http.Flusher).Flush()
+select {
+case <-ticker.C:
+case <-clientGone:
+log.Printf("Client %v disconnected from the clock", r.RemoteAddr)
+return
+}

@@ -1,0 +1,6 @@
+func testSourceSpecificMulticastSocketOptions(t *testing.T, c testIPv6MulticastConn, ifi *net.Interface, grp, src net.Addr) {
+// MCAST_JOIN_GROUP -> MCAST_BLOCK_SOURCE -> MCAST_UNBLOCK_SOURCE -> MCAST_LEAVE_GROUP
+if err := c.JoinGroup(ifi, grp); err != nil {
+t.Error(err)
+return
+}

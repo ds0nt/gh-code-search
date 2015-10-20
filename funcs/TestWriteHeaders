@@ -1,0 +1,103 @@
+func TestWriteHeaders(t *testing.T) {
+tests := []struct {
+name      string
+p         HeadersFrameParam
+wantEnc   string
+wantFrame *HeadersFrame
+}{
+{
+"basic",
+HeadersFrameParam{
+StreamID:      42,
+BlockFragment: []byte("abc"),
+Priority:      PriorityParam{},
+},
+"x00x00x03x01x00x00x00x00*abc",
+&HeadersFrame{
+FrameHeader: FrameHeader{
+valid:    true,
+StreamID: 42,
+Type:     FrameHeaders,
+Length:   uint32(len("abc")),
+},
+Priority:      PriorityParam{},
+headerFragBuf: []byte("abc"),
+},
+},
+{
+"basic + end flags",
+HeadersFrameParam{
+StreamID:      42,
+BlockFragment: []byte("abc"),
+EndStream:     true,
+EndHeaders:    true,
+Priority:      PriorityParam{},
+},
+"x00x00x03x01x05x00x00x00*abc",
+&HeadersFrame{
+FrameHeader: FrameHeader{
+valid:    true,
+StreamID: 42,
+Type:     FrameHeaders,
+Flags:    FlagHeadersEndStream | FlagHeadersEndHeaders,
+Length:   uint32(len("abc")),
+},
+Priority:      PriorityParam{},
+headerFragBuf: []byte("abc"),
+},
+},
+{
+"with padding",
+HeadersFrameParam{
+StreamID:      42,
+BlockFragment: []byte("abc"),
+EndStream:     true,
+EndHeaders:    true,
+PadLength:     5,
+Priority:      PriorityParam{},
+},
+"x00x00tx01rx00x00x00*x05abcx00x00x00x00x00",
+&HeadersFrame{
+FrameHeader: FrameHeader{
+valid:    true,
+StreamID: 42,
+Type:     FrameHeaders,
+Flags:    FlagHeadersEndStream | FlagHeadersEndHeaders | FlagHeadersPadded,
+Length:   uint32(1 + len("abc") + 5), // pad length + contents + padding
+},
+Priority:      PriorityParam{},
+headerFragBuf: []byte("abc"),
+},
+},
+{
+"with priority",
+HeadersFrameParam{
+StreamID:      42,
+BlockFragment: []byte("abc"),
+EndStream:     true,
+EndHeaders:    true,
+PadLength:     2,
+Priority: PriorityParam{
+StreamDep: 15,
+Exclusive: true,
+Weight:    127,
+},
+},
+"x00x00vx01-x00x00x00*x02x80x00x00x0fu007fabcx00x00",
+&HeadersFrame{
+FrameHeader: FrameHeader{
+valid:    true,
+StreamID: 42,
+Type:     FrameHeaders,
+Flags:    FlagHeadersEndStream | FlagHeadersEndHeaders | FlagHeadersPadded | FlagHeadersPriority,
+Length:   uint32(1 + 5 + len("abc") + 2), // pad length + priority + contents + padding
+},
+Priority: PriorityParam{
+StreamDep: 15,
+Exclusive: true,
+Weight:    127,
+},
+headerFragBuf: []byte("abc"),
+},
+},
+}

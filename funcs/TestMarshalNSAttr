@@ -1,0 +1,6 @@
+func TestMarshalNSAttr(t *testing.T) {
+src := TableAttrs{TAttr{"hello", "world", "en_US", "other1", "other2", "other3", "other4"}}
+data, err := Marshal(&src)
+if err != nil {
+t.Fatalf("Marshal: %v", err)
+}

@@ -1,0 +1,4 @@
+func checkNodeConsistency(n *Node) error {
+if n == nil {
+return nil
+}

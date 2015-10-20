@@ -1,0 +1,5 @@
+func TestWithBadProtocol(t *testing.T) {
+_, err := testWithProtocol(t, []string{"test"})
+if err != ErrBadStatus {
+t.Errorf("SubProto: expected %v, got %v", ErrBadStatus, err)
+}

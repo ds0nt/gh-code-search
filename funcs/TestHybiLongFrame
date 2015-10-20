@@ -1,0 +1,11 @@
+func TestHybiLongFrame(t *testing.T) {
+frameHeader := &hybiFrameHeader{Fin: true, OpCode: TextFrame}
+payload := make([]byte, 126)
+testHybiFrame(t, []byte{0x81, 126, 0x00, 126}, payload, payload, frameHeader)
+
+payload = make([]byte, 65535)
+testHybiFrame(t, []byte{0x81, 126, 0xff, 0xff}, payload, payload, frameHeader)
+
+payload = make([]byte, 65536)
+testHybiFrame(t, []byte{0x81, 127, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00}, payload, payload, frameHeader)
+}

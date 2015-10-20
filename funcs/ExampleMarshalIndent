@@ -1,0 +1,4 @@
+func ExampleMarshalIndent() {
+type Address struct {
+City, State string
+}

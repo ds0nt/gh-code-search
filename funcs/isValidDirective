@@ -1,0 +1,13 @@
+func isValidDirective(dir Directive) bool {
+var (
+depth     int
+inquote   uint8
+incomment bool
+)
+for i, c := range dir {
+switch {
+case incomment:
+if c == '>' {
+if n := 1 + i - len(endComment); n >= 0 && bytes.Equal(dir[n:i+1], endComment) {
+incomment = false
+}

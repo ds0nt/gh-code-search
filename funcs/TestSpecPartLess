@@ -1,0 +1,11 @@
+func TestSpecPartLess(t *testing.T) {
+tests := []struct {
+sec1, sec2 string
+want       bool
+}{
+{"6.2.1", "6.2", false},
+{"6.2", "6.2.1", true},
+{"6.10", "6.10.1", true},
+{"6.10", "6.1.1", false}, // 10, not 1
+{"6.1", "6.1", false},    // equal, so not less
+}

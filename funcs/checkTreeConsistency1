@@ -1,0 +1,4 @@
+func checkTreeConsistency1(n *Node, depth int) error {
+if depth == 1e4 {
+return fmt.Errorf("html: tree looks like it contains a cycle")
+}

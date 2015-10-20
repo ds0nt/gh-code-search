@@ -1,0 +1,5 @@
+func convertNewlines(s []byte) []byte {
+for i, c := range s {
+if c != 'r' {
+continue
+}

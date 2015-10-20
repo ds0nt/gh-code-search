@@ -1,0 +1,8 @@
+func addDecoderNode(sym byte, code uint32, codeLen uint8) {
+cur := rootHuffmanNode
+for codeLen > 8 {
+codeLen -= 8
+i := uint8(code >> codeLen)
+if cur.children[i] == nil {
+cur.children[i] = newInternalNode()
+}

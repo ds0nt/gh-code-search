@@ -1,0 +1,5 @@
+func walkToRoot(name string, f func(name0 string, first bool) bool) bool {
+for first := true; ; first = false {
+if !f(name, first) {
+return false
+}

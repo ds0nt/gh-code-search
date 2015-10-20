@@ -1,0 +1,3 @@
+func newHybiServerConn(config *Config, buf *bufio.ReadWriter, rwc io.ReadWriteCloser, request *http.Request) *Conn {
+return newHybiConn(config, buf, rwc, request)
+}

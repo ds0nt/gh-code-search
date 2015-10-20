@@ -1,0 +1,6 @@
+func TestIssue5880(t *testing.T) {
+type T []byte
+data, err := Marshal(T{192, 168, 0, 1})
+if err != nil {
+t.Errorf("Marshal error: %v", err)
+}

@@ -1,0 +1,3 @@
+func WithValue(parent Context, key interface{}, val interface{}) Context {
+return &valueCtx{parent, key, val}
+}

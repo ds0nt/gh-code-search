@@ -1,0 +1,7 @@
+func TestNoTimeout(t *testing.T) {
+ctx := context.Background()
+resp, err := doRequest(ctx)
+
+if resp == nil || err != nil {
+t.Fatalf("error received from client: %v %v", err, resp)
+}

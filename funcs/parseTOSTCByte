@@ -1,0 +1,6 @@
+func parseTOSTCByte(w io.Writer, r io.Reader) error {
+dec := xml.NewDecoder(r)
+var ttb tosTCByte
+if err := dec.Decode(&ttb); err != nil {
+return err
+}

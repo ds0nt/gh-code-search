@@ -1,0 +1,7 @@
+func TestMarshalErrors(t *testing.T) {
+for idx, test := range marshalErrorTests {
+data, err := Marshal(test.Value)
+if err == nil {
+t.Errorf("#%d: marshal(%#v) = [success] %q, want error %v", idx, test.Value, data, test.Err)
+continue
+}

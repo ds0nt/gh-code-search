@@ -1,0 +1,28 @@
+func TestMisses(t *testing.T) {
+testCases := []string{
+"",
+"x00",
+"xff",
+"A",
+"DIV",
+"Div",
+"dIV",
+"aa",
+"ax00",
+"ab",
+"abb",
+"abbr0",
+"abbr ",
+" abbr",
+" a",
+"acceptcharset",
+"acceptCharset",
+"accept_charset",
+"h0",
+"h1h2",
+"h7",
+"onClick",
+"λ",
+// The following string has the same hash (0xa1d7fab7) as "onmouseover".
+"x00x00x00x00x00x50x18xaex38xd0xb7",
+}

@@ -1,0 +1,17 @@
+func TestAppendIndexedName(t *testing.T) {
+tests := []struct {
+f        HeaderField
+i        uint64
+indexing bool
+wantHex  string
+}{
+// Incremental indexing
+{HeaderField{":status", "302", false}, 8, true, "48 82 6402"},
+
+// Without indexing
+{HeaderField{":status", "302", false}, 8, false, "08 82 6402"},
+
+// Never indexed
+{HeaderField{":status", "302", true}, 8, true, "18 82 6402"},
+{HeaderField{":status", "302", true}, 8, false, "18 82 6402"},
+}

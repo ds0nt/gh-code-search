@@ -1,0 +1,4 @@
+func ExampleEncoder() {
+type Address struct {
+City, State string
+}

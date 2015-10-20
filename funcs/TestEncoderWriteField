@@ -1,0 +1,32 @@
+func TestEncoderWriteField(t *testing.T) {
+var buf bytes.Buffer
+e := NewEncoder(&buf)
+var got []HeaderField
+d := NewDecoder(4<<10, func(f HeaderField) {
+got = append(got, f)
+})
+
+tests := []struct {
+hdrs []HeaderField
+}{
+{[]HeaderField{
+pair(":method", "GET"),
+pair(":scheme", "http"),
+pair(":path", "/"),
+pair(":authority", "www.example.com"),
+}},
+{[]HeaderField{
+pair(":method", "GET"),
+pair(":scheme", "http"),
+pair(":path", "/"),
+pair(":authority", "www.example.com"),
+pair("cache-control", "no-cache"),
+}},
+{[]HeaderField{
+pair(":method", "GET"),
+pair(":scheme", "https"),
+pair(":path", "/index.html"),
+pair(":authority", "www.example.com"),
+pair("custom-key", "custom-value"),
+}},
+}

@@ -1,0 +1,3 @@
+func parseControlMessage(b []byte) (*ControlMessage, error) {
+return nil, errOpNoSupport
+}

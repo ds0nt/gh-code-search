@@ -1,0 +1,7 @@
+func TestCopyTokenCharData(t *testing.T) {
+data := []byte("same data")
+var tok1 Token = CharData(data)
+tok2 := CopyToken(tok1)
+if !reflect.DeepEqual(tok1, tok2) {
+t.Error("CopyToken(CharData) != CharData")
+}

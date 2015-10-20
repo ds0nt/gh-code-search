@@ -1,0 +1,8 @@
+func initialIM(p *parser) bool {
+switch p.tok.Type {
+case TextToken:
+p.tok.Data = strings.TrimLeft(p.tok.Data, whitespace)
+if len(p.tok.Data) == 0 {
+// It was all whitespace, so ignore it.
+return true
+}

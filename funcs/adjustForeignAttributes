@@ -1,0 +1,5 @@
+func adjustForeignAttributes(aa []Attribute) {
+for i, a := range aa {
+if a.Key == "" || a.Key[0] != 'x' {
+continue
+}

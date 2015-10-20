@@ -1,0 +1,4 @@
+func parseHeadersFrame(fh FrameHeader, p []byte) (_ Frame, err error) {
+hf := &HeadersFrame{
+FrameHeader: fh,
+}

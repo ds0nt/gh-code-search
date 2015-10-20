@@ -1,0 +1,5 @@
+func NewMockFileSystem(ctrl *gomock.Controller) *MockFileSystem {
+mock := &MockFileSystem{ctrl: ctrl}
+mock.recorder = &_MockFileSystemRecorder{mock}
+return mock
+}

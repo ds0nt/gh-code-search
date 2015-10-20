@@ -1,0 +1,5 @@
+func hasRoutableIP(network string, ifi *net.Interface) (net.IP, bool) {
+ifat, err := ifi.Addrs()
+if err != nil {
+return nil, false
+}

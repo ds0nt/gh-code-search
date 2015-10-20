@@ -1,0 +1,14 @@
+func TestRoundTrip(t *testing.T) {
+// From issue 7535
+const s = `<ex:element xmlns:ex="http://example.com/schema"></ex:element>`
+in := bytes.NewBufferString(s)
+for i := 0; i < 10; i++ {
+out := &bytes.Buffer{}
+d := NewDecoder(in)
+e := NewEncoder(out)
+
+for {
+t, err := d.Token()
+if err == io.EOF {
+break
+}

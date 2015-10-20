@@ -1,0 +1,7 @@
+func decodeHeader(t *testing.T, headerBlock []byte) (pairs [][2]string) {
+d := hpack.NewDecoder(initialHeaderTableSize, func(f hpack.HeaderField) {
+pairs = append(pairs, [2]string{f.Name, f.Value})
+})
+if _, err := d.Write(headerBlock); err != nil {
+t.Fatalf("hpack decoding error: %v", err)
+}

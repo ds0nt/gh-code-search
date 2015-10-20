@@ -1,0 +1,3 @@
+func findContentLength(fs FileSystem, ls LockSystem, name string, fi os.FileInfo) (string, error) {
+return strconv.FormatInt(fi.Size(), 10), nil
+}

@@ -1,0 +1,6 @@
+func testServerRequest(t *testing.T, writeReq func(*serverTester), checkReq func(*http.Request)) {
+gotReq := make(chan bool, 1)
+st := newServerTester(t, func(w http.ResponseWriter, r *http.Request) {
+if r.Body == nil {
+t.Fatal("nil Body")
+}

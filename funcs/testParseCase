@@ -1,0 +1,9 @@
+func testParseCase(text, want, context string) (err error) {
+defer func() {
+if x := recover(); x != nil {
+switch e := x.(type) {
+case error:
+err = e
+default:
+err = fmt.Errorf("%v", e)
+}

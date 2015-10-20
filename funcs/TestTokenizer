@@ -1,0 +1,10 @@
+func TestTokenizer(t *testing.T) {
+loop:
+for _, tt := range tokenTests {
+z := NewTokenizer(strings.NewReader(tt.html))
+if tt.golden != "" {
+for i, s := range strings.Split(tt.golden, "$") {
+if z.Next() == ErrorToken {
+t.Errorf("%s token %d: want %q got error %v", tt.desc, i, s, z.Err())
+continue loop
+}

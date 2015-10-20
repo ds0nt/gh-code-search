@@ -1,0 +1,5 @@
+func TestCancelRemoves(t *testing.T) {
+checkChildren := func(when string, ctx Context, want int) {
+if got := len(ctx.(*cancelCtx).children); got != want {
+t.Errorf("%s: context has %d children, want %d", when, got, want)
+}

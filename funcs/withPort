@@ -1,0 +1,4 @@
+func withPort(host string) string {
+if _, _, err := net.SplitHostPort(host); err != nil {
+return net.JoinHostPort(host, "443")
+}

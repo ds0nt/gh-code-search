@@ -1,0 +1,4 @@
+func typeFrameParser(t FrameType) frameParser {
+if f := frameParsers[t]; f != nil {
+return f
+}

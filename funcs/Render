@@ -1,0 +1,4 @@
+func Render(w io.Writer, n *Node) error {
+if x, ok := w.(writer); ok {
+return render(x, n)
+}

@@ -1,0 +1,5 @@
+func copyProps(dst, src File) error {
+d, ok := dst.(DeadPropsHolder)
+if !ok {
+return nil
+}

@@ -1,0 +1,6 @@
+func TestAverage(t *testing.T) {
+a := new(histogram)
+average := a.average()
+if average != 0 {
+t.Errorf("Average of empty histogram was %v WANT: 0", average)
+}

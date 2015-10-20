@@ -1,0 +1,7 @@
+func newTrace() *trace {
+select {
+case tr := <-traceFreeList:
+return tr
+default:
+return new(trace)
+}

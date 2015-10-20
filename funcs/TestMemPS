@@ -1,0 +1,8 @@
+func TestMemPS(t *testing.T) {
+// calcProps calculates the getlastmodified and getetag DAV: property
+// values in pstats for resource name in file-system fs.
+calcProps := func(name string, fs FileSystem, ls LockSystem, pstats []Propstat) error {
+fi, err := fs.Stat(name)
+if err != nil {
+return err
+}

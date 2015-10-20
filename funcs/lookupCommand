@@ -1,0 +1,5 @@
+func lookupCommand(prefix string) (name string, c command, ok bool) {
+prefix = strings.ToLower(prefix)
+if c, ok = commands[prefix]; ok {
+return prefix, c, ok
+}

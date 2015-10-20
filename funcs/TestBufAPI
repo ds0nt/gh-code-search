@@ -1,0 +1,13 @@
+func TestBufAPI(t *testing.T) {
+s := "0<a>1</a>2<b>3<a>4<a>5</a>6</b>7</a>8<a/>9"
+z := NewTokenizer(bytes.NewBufferString(s))
+var result bytes.Buffer
+depth := 0
+loop:
+for {
+tt := z.Next()
+switch tt {
+case ErrorToken:
+if z.Err() != io.EOF {
+t.Error(z.Err())
+}

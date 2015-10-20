@@ -1,0 +1,10 @@
+func afterHeadIM(p *parser) bool {
+switch p.tok.Type {
+case TextToken:
+s := strings.TrimLeft(p.tok.Data, whitespace)
+if len(s) < len(p.tok.Data) {
+// Add the initial whitespace to the current node.
+p.addText(p.tok.Data[:len(p.tok.Data)-len(s)])
+if s == "" {
+return true
+}

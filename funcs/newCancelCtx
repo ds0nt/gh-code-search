@@ -1,0 +1,5 @@
+func newCancelCtx(parent Context) cancelCtx {
+return cancelCtx{
+Context: parent,
+done:    make(chan struct{}),
+}

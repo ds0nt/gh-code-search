@@ -1,0 +1,5 @@
+func render(w writer, n *Node) error {
+err := render1(w, n)
+if err == plaintextAbort {
+err = nil
+}

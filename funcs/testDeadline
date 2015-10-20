@@ -1,0 +1,6 @@
+func testDeadline(c Context, wait time.Duration, t *testing.T) {
+select {
+case <-time.After(wait):
+t.Fatalf("context should have timed out")
+case <-c.Done():
+}

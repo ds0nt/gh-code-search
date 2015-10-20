@@ -1,0 +1,6 @@
+func BenchmarkMemFileWrite(b *testing.B) {
+fs := NewMemFS()
+xxx := make([]byte, 1024)
+for i := range xxx {
+xxx[i] = 'x'
+}

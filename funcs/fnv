@@ -1,0 +1,5 @@
+func fnv(h uint32, s []byte) uint32 {
+for i := range s {
+h ^= uint32(s[i])
+h *= 16777619
+}

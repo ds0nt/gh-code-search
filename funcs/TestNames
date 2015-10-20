@@ -1,0 +1,5 @@
+func TestNames(t *testing.T) {
+for _, e := range encodings {
+if e.name == "replacement" {
+continue
+}

@@ -1,0 +1,4 @@
+func parsePushPromise(fh FrameHeader, p []byte) (_ Frame, err error) {
+pp := &PushPromiseFrame{
+FrameHeader: fh,
+}

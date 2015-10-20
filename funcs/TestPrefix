@@ -1,0 +1,8 @@
+func TestPrefix(t *testing.T) {
+const dst, blah = "Destination", "blah blah blah"
+
+do := func(method, urlStr string, body io.Reader, wantStatusCode int, headers ...string) error {
+req, err := http.NewRequest(method, urlStr, body)
+if err != nil {
+return err
+}

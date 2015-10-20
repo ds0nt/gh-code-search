@@ -1,0 +1,6 @@
+func TestWithCancel(t *testing.T) {
+c1, cancel := WithCancel(Background())
+
+if got, want := fmt.Sprint(c1), "context.Background.WithCancel"; got != want {
+t.Errorf("c1.String() = %q want %q", got, want)
+}

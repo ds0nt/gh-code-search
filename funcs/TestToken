@@ -1,0 +1,9 @@
+func TestToken(t *testing.T) {
+d := NewDecoder(strings.NewReader(testInput))
+d.Entity = testEntity
+
+for i, want := range cookedTokens {
+have, err := d.Token()
+if err != nil {
+t.Fatalf("token %d: unexpected error: %s", i, err)
+}

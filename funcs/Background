@@ -1,0 +1,3 @@
+func Background() Context {
+return background
+}

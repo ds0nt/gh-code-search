@@ -1,0 +1,4 @@
+func dump(n *Node) (string, error) {
+if n == nil || n.FirstChild == nil {
+return "", nil
+}

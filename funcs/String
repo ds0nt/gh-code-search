@@ -1,0 +1,4 @@
+func String(s []byte) string {
+if a := Lookup(s); a != 0 {
+return a.String()
+}

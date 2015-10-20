@@ -1,0 +1,7 @@
+func TestEncode(t *testing.T) {
+for _, tc := range testCases {
+e, _ := Lookup(tc.otherEncoding)
+if e == nil {
+t.Errorf("%s: not found", tc.otherEncoding)
+continue
+}

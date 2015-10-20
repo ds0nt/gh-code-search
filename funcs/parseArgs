@@ -1,0 +1,4 @@
+func parseArgs(req *http.Request) (fam string, b int, ok bool) {
+if req == nil {
+return "", 0, false
+}

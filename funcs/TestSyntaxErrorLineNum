@@ -1,0 +1,6 @@
+func TestSyntaxErrorLineNum(t *testing.T) {
+testInput := "<P>Foo<P>nn<P>Bar</>n"
+d := NewDecoder(strings.NewReader(testInput))
+var err error
+for _, err = d.Token(); err == nil; _, err = d.Token() {
+}

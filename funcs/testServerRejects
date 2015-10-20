@@ -1,0 +1,14 @@
+func testServerRejects(t *testing.T, writeReq func(*serverTester)) {
+st := newServerTester(t, func(w http.ResponseWriter, r *http.Request) {})
+st.addLogFilter("connection error: PROTOCOL_ERROR")
+defer st.Close()
+st.greet()
+writeReq(st)
+
+st.wantGoAway()
+errc := make(chan error, 1)
+go func() {
+fr, err := st.fr.ReadFrame()
+if err == nil {
+err = fmt.Errorf("got frame of type %T", fr)
+}

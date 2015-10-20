@@ -1,0 +1,3 @@
+func checkTreeConsistency(n *Node) error {
+return checkTreeConsistency1(n, 0)
+}

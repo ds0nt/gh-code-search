@@ -1,0 +1,11 @@
+func TestHybiServerReadWithoutMasking(t *testing.T) {
+wireData := []byte{0x81, 0x05, 'h', 'e', 'l', 'l', 'o'}
+br := bufio.NewReader(bytes.NewBuffer(wireData))
+bw := bufio.NewWriter(bytes.NewBuffer([]byte{}))
+conn := newHybiConn(newConfig(t, "/"), bufio.NewReadWriter(br, bw), nil, new(http.Request))
+// server MUST close the connection upon receiving a non-masked frame.
+msg := make([]byte, 512)
+_, err := conn.Read(msg)
+if err != io.EOF {
+t.Errorf("read 1st frame, expect %q, but got %q", io.EOF, err)
+}

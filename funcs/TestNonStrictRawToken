@@ -1,0 +1,5 @@
+func TestNonStrictRawToken(t *testing.T) {
+d := NewDecoder(strings.NewReader(nonStrictInput))
+d.Strict = false
+testRawToken(t, d, nonStrictInput, nonStrictTokens)
+}

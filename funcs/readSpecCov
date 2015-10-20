@@ -1,0 +1,7 @@
+func readSpecCov(r io.Reader) specCoverage {
+sc := specCoverage{
+coverage: map[specPart]bool{},
+d:        xml.NewDecoder(r)}
+sc.readSection(nil)
+return sc
+}

@@ -1,0 +1,6 @@
+func printStackRecord(w io.Writer, stk []uintptr) {
+for _, pc := range stk {
+f := runtime.FuncForPC(pc)
+if f == nil {
+continue
+}

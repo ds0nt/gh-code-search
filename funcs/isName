@@ -1,0 +1,4 @@
+func isName(s []byte) bool {
+if len(s) == 0 {
+return false
+}

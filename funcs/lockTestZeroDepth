@@ -1,0 +1,7 @@
+func lockTestZeroDepth(name string) bool {
+switch name[len(name)-1] {
+case 'i':
+return false
+case 'z':
+return true
+}

@@ -1,0 +1,9 @@
+func testRawToken(t *testing.T, d *Decoder, raw string, rawTokens []Token) {
+lastEnd := int64(0)
+for i, want := range rawTokens {
+start := d.InputOffset()
+have, err := d.RawToken()
+end := d.InputOffset()
+if err != nil {
+t.Fatalf("token %d: unexpected error: %s", i, err)
+}

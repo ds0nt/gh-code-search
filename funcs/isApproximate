@@ -1,0 +1,3 @@
+func isApproximate(x *Float, y float64) bool {
+return isNear(x, y, 1e-2)
+}

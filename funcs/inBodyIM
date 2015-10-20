@@ -1,0 +1,11 @@
+func inBodyIM(p *parser) bool {
+switch p.tok.Type {
+case TextToken:
+d := p.tok.Data
+switch n := p.oe.top(); n.DataAtom {
+case a.Pre, a.Listing:
+if n.FirstChild == nil {
+// Ignore a newline at the start of a <pre> block.
+if d != "" && d[0] == 'r' {
+d = d[1:]
+}

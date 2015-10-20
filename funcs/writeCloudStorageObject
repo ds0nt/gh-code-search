@@ -1,0 +1,8 @@
+func writeCloudStorageObject(httpClient *http.Client) {
+content := os.Stdin
+const maxSlurp = 1 << 20
+var buf bytes.Buffer
+n, err := io.CopyN(&buf, content, maxSlurp)
+if err != nil && err != io.EOF {
+log.Fatalf("Error reading from stdin: %v, %v", n, err)
+}

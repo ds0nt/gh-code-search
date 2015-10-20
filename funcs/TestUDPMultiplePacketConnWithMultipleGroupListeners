@@ -1,0 +1,5 @@
+func TestUDPMultiplePacketConnWithMultipleGroupListeners(t *testing.T) {
+switch runtime.GOOS {
+case "nacl", "plan9", "solaris", "windows":
+t.Skipf("not supported on %s", runtime.GOOS)
+}

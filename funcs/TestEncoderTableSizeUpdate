@@ -1,0 +1,11 @@
+func TestEncoderTableSizeUpdate(t *testing.T) {
+tests := []struct {
+size1, size2 uint32
+wantHex      string
+}{
+// Should emit 2 table size updates (2048 and 4096)
+{2048, 4096, "3fe10f 3fe11f 82"},
+
+// Should emit 1 table size update (2048)
+{16384, 2048, "3fe10f 82"},
+}

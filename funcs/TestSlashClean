@@ -1,0 +1,15 @@
+func TestSlashClean(t *testing.T) {
+testCases := []string{
+"",
+".",
+"/",
+"/./",
+"//",
+"//.",
+"//a",
+"/a",
+"/a/b/c",
+"/a//b/./../c/d/",
+"a",
+"a/b/c",
+}

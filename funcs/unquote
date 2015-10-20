@@ -1,0 +1,4 @@
+func unquote(s string) string {
+if strings.Index(s, "\") < 0 {
+return s
+}

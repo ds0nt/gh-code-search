@@ -1,0 +1,11 @@
+func appendByteToHuffmanCode(dst []byte, rembits uint8, c byte) ([]byte, uint8) {
+code := huffmanCodes[c]
+nbits := huffmanCodeLen[c]
+
+for {
+if rembits > nbits {
+t := uint8(code << (rembits - nbits))
+dst[len(dst)-1] |= t
+rembits -= nbits
+break
+}

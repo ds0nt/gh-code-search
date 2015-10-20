@@ -1,0 +1,13 @@
+func TestChildFinishesFirst(t *testing.T) {
+cancelable, stop := WithCancel(Background())
+defer stop()
+for _, parent := range []Context{Background(), cancelable} {
+child, cancel := WithCancel(parent)
+
+select {
+case x := <-parent.Done():
+t.Errorf("<-parent.Done() == %v want nothing (it should block)", x)
+case x := <-child.Done():
+t.Errorf("<-child.Done() == %v want nothing (it should block)", x)
+default:
+}

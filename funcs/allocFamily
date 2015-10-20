@@ -1,0 +1,8 @@
+func allocFamily(fam string) *family {
+completedMu.Lock()
+defer completedMu.Unlock()
+f := completedTraces[fam]
+if f == nil {
+f = newFamily()
+completedTraces[fam] = f
+}

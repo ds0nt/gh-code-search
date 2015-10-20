@@ -1,0 +1,6 @@
+func reparentChildren(dst, src *Node) {
+for {
+child := src.FirstChild
+if child == nil {
+break
+}

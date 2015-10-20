@@ -1,0 +1,7 @@
+func newEventLog() *eventLog {
+select {
+case el := <-freeEventLogs:
+return el
+default:
+return new(eventLog)
+}

@@ -1,0 +1,8 @@
+func assignIndexes(w io.Writer, n *node) error {
+if len(n.children) != 0 {
+// Assign nodesIndex.
+n.firstChild = nextNodesIndex
+for _, c := range n.children {
+c.nodesIndex = nextNodesIndex
+nextNodesIndex++
+}

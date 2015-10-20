@@ -1,0 +1,5 @@
+func NewEncoder(w io.Writer) *Encoder {
+e := &Encoder{printer{Writer: bufio.NewWriter(w)}}
+e.p.encoder = e
+return e
+}

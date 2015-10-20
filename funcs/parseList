@@ -1,0 +1,5 @@
+func parseList(s string) (l ifList, remaining string, ok bool) {
+tokenType, _, s := lex(s)
+if tokenType != '(' {
+return ifList{}, "", false
+}

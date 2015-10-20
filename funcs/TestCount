@@ -1,0 +1,8 @@
+func TestCount(t *testing.T) {
+once.Do(startServer)
+
+// websocket.Dial()
+client, err := net.Dial("tcp", serverAddr)
+if err != nil {
+t.Fatal("dialing", err)
+}

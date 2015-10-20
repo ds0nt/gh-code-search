@@ -1,0 +1,11 @@
+func TestDialConfigBadVersion(t *testing.T) {
+once.Do(startServer)
+config := newConfig(t, "/echo")
+config.Version = 1234
+
+_, err := DialConfig(config)
+
+if dialerr, ok := err.(*DialError); ok {
+if dialerr.Err != ErrBadProtocolVersion {
+t.Errorf("dial expected err %q but got %q", ErrBadProtocolVersion, dialerr.Err)
+}

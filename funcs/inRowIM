@@ -1,0 +1,15 @@
+func inRowIM(p *parser) bool {
+switch p.tok.Type {
+case StartTagToken:
+switch p.tok.DataAtom {
+case a.Td, a.Th:
+p.clearStackToContext(tableRowScope)
+p.addElement()
+p.afe = append(p.afe, &scopeMarker)
+p.im = inCellIM
+return true
+case a.Caption, a.Col, a.Colgroup, a.Tbody, a.Tfoot, a.Thead, a.Tr:
+if p.popUntil(tableScope, a.Tr) {
+p.im = inTableBodyIM
+return false
+}

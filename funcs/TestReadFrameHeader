@@ -1,0 +1,15 @@
+func TestReadFrameHeader(t *testing.T) {
+tests := []struct {
+in   string
+want FrameHeader
+}{
+{in: "x00x00x00" + "x00" + "x00" + "x00x00x00x00", want: FrameHeader{}},
+{in: "x01x02x03" + "x04" + "x05" + "x06x07x08x09", want: FrameHeader{
+Length: 66051, Type: 4, Flags: 5, StreamID: 101124105,
+}},
+// Ignore high bit:
+{in: "xffxffxff" + "xff" + "xff" + "xffxffxffxff", want: FrameHeader{
+Length: 16777215, Type: 255, Flags: 255, StreamID: 2147483647}},
+{in: "xffxffxff" + "xff" + "xff" + "x7fxffxffxff", want: FrameHeader{
+Length: 16777215, Type: 255, Flags: 255, StreamID: 2147483647}},
+}

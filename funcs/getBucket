@@ -1,0 +1,5 @@
+func getBucket(i int64) (index int) {
+index = log2(i) - 1
+if index < 0 {
+index = 0
+}

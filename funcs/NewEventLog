@@ -1,0 +1,13 @@
+func NewEventLog(family, title string) EventLog {
+el := newEventLog()
+el.ref()
+el.Family, el.Title = family, title
+el.Start = time.Now()
+el.events = make([]logEntry, 0, maxEventsPerLog)
+el.stack = make([]uintptr, 32)
+n := runtime.Callers(2, el.stack)
+el.stack = el.stack[:n]
+
+getEventFamily(family).add(el)
+return el
+}

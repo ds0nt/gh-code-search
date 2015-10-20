@@ -1,0 +1,7 @@
+func endsStream(w writeFramer) bool {
+switch v := w.(type) {
+case *writeData:
+return v.endStream
+case *writeResHeaders:
+return v.endStream
+}

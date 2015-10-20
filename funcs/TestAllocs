@@ -1,0 +1,59 @@
+func TestAllocs(t *testing.T) {
+bg := Background()
+for _, test := range []struct {
+desc       string
+f          func()
+limit      float64
+gccgoLimit float64
+}{
+{
+desc:       "Background()",
+f:          func() { Background() },
+limit:      0,
+gccgoLimit: 0,
+},
+{
+desc: fmt.Sprintf("WithValue(bg, %v, nil)", k1),
+f: func() {
+c := WithValue(bg, k1, nil)
+c.Value(k1)
+},
+limit:      3,
+gccgoLimit: 3,
+},
+{
+desc: "WithTimeout(bg, 15*time.Millisecond)",
+f: func() {
+c, _ := WithTimeout(bg, 15*time.Millisecond)
+<-c.Done()
+},
+limit:      8,
+gccgoLimit: 15,
+},
+{
+desc: "WithCancel(bg)",
+f: func() {
+c, cancel := WithCancel(bg)
+cancel()
+<-c.Done()
+},
+limit:      5,
+gccgoLimit: 8,
+},
+{
+desc: "WithTimeout(bg, 100*time.Millisecond)",
+f: func() {
+c, cancel := WithTimeout(bg, 100*time.Millisecond)
+cancel()
+<-c.Done()
+},
+limit:      8,
+gccgoLimit: 25,
+},
+} {
+limit := test.limit
+if runtime.Compiler == "gccgo" {
+// gccgo does not yet do escape analysis.
+// TOOD(iant): Remove this when gccgo does do escape analysis.
+limit = test.gccgoLimit
+}

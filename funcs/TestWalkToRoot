@@ -1,0 +1,33 @@
+func TestWalkToRoot(t *testing.T) {
+testCases := []struct {
+name string
+want []string
+}{{
+"/a/b/c/d",
+[]string{
+"/a/b/c/d",
+"/a/b/c",
+"/a/b",
+"/a",
+"/",
+},
+}, {
+"/a",
+[]string{
+"/a",
+"/",
+},
+}, {
+"/",
+[]string{
+"/",
+},
+}}
+
+for _, tc := range testCases {
+var got []string
+if !walkToRoot(tc.name, func(name0 string, first bool) bool {
+if first != (len(got) == 0) {
+t.Errorf("name=%q: first=%t but len(got)==%d", tc.name, first, len(got))
+return false
+}

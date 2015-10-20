@@ -1,0 +1,12 @@
+func newServerTester(t testing.TB, handler http.HandlerFunc, opts ...interface{}) *serverTester {
+resetHooks()
+
+logBuf := new(bytes.Buffer)
+ts := httptest.NewUnstartedServer(handler)
+
+tlsConfig := &tls.Config{
+InsecureSkipVerify: true,
+// The h2-14 is temporary, until curl is updated. (as used by unit tests
+// in Docker)
+NextProtos: []string{NextProtoTLS, "h2-14"},
+}

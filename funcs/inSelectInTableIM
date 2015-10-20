@@ -1,0 +1,12 @@
+func inSelectInTableIM(p *parser) bool {
+switch p.tok.Type {
+case StartTagToken, EndTagToken:
+switch p.tok.DataAtom {
+case a.Caption, a.Table, a.Tbody, a.Tfoot, a.Thead, a.Tr, a.Td, a.Th:
+if p.tok.Type == StartTagToken || p.elementInScope(tableScope, p.tok.DataAtom) {
+p.parseImpliedToken(EndTagToken, a.Select, a.Select.String())
+return false
+} else {
+// Ignore the token.
+return true
+}

@@ -1,0 +1,9 @@
+func parseDataFrame(fh FrameHeader, payload []byte) (Frame, error) {
+if fh.StreamID == 0 {
+// DATA frames MUST be associated with a stream. If a
+// DATA frame is received whose stream identifier
+// field is 0x0, the recipient MUST respond with a
+// connection error (Section 5.4.1) of type
+// PROTOCOL_ERROR.
+return nil, ConnectionError(ErrCodeProtocol)
+}

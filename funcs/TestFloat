@@ -1,0 +1,5 @@
+func TestFloat(t *testing.T) {
+f := Float(1)
+if g, w := f.String(), "1"; g != w {
+t.Errorf("Float(1).String = %q; want %q", g, w)
+}

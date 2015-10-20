@@ -1,0 +1,10 @@
+func fooHandler(w http.ResponseWriter, req *http.Request) {
+tr := trace.New("mypkg.Foo", req.URL.Path)
+defer tr.Finish()
+...
+tr.LazyPrintf("some event %q happened", str)
+...
+if err := somethingImportant(); err != nil {
+tr.LazyPrintf("somethingImportant failed: %v", err)
+tr.SetError()
+}

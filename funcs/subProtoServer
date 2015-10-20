@@ -1,0 +1,4 @@
+func subProtoServer(ws *Conn) {
+for _, proto := range ws.Config().Protocol {
+io.WriteString(ws, proto)
+}

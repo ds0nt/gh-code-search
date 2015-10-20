@@ -1,0 +1,13 @@
+func CopyToken(t Token) Token {
+switch v := t.(type) {
+case CharData:
+return v.Copy()
+case Comment:
+return v.Copy()
+case Directive:
+return v.Copy()
+case ProcInst:
+return v.Copy()
+case StartElement:
+return v.Copy()
+}

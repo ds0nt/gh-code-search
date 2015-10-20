@@ -1,0 +1,8 @@
+func TestUnmarshalIntoInterface(t *testing.T) {
+pod := new(Pod)
+pod.Pea = new(Pea)
+xml := `<Pod><Pea><Cotelydon>Green stuff</Cotelydon></Pea></Pod>`
+err := Unmarshal([]byte(xml), pod)
+if err != nil {
+t.Fatalf("failed to unmarshal %q: %v", xml, err)
+}

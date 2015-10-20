@@ -1,0 +1,9 @@
+func TestReadProppatch(t *testing.T) {
+ppStr := func(pps []Proppatch) string {
+var outer []string
+for _, pp := range pps {
+var inner []string
+for _, p := range pp.Props {
+inner = append(inner, fmt.Sprintf("{XMLName: %q, Lang: %q, InnerXML: %q}",
+p.XMLName, p.Lang, p.InnerXML))
+}

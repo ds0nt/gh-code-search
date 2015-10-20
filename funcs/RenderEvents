@@ -1,0 +1,15 @@
+func RenderEvents(w http.ResponseWriter, req *http.Request, sensitive bool) {
+now := time.Now()
+data := &struct {
+Families []string // family names
+Buckets  []bucket
+Counts   [][]int // eventLog count per family/bucket
+
+// Set when a bucket has been selected.
+Family    string
+Bucket    int
+EventLogs eventLogs
+Expanded  bool
+}{
+Buckets: buckets,
+}

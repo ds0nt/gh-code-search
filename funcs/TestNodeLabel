@@ -1,0 +1,6 @@
+func TestNodeLabel(t *testing.T) {
+for i, want := range nodeLabels {
+got := nodeLabel(uint32(i))
+if got != want {
+t.Errorf("%d: got %q, want %q", i, got, want)
+}

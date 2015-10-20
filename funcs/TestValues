@@ -1,0 +1,5 @@
+func TestValues(t *testing.T) {
+check := func(c Context, nm, v1, v2, v3 string) {
+if v, ok := c.Value(k1).(string); ok == (len(v1) == 0) || v != v1 {
+t.Errorf(`%s.Value(k1).(string) = %q, %t want %q, %t`, nm, v, ok, v1, len(v1) != 0)
+}

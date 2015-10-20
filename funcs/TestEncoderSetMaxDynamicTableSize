@@ -1,0 +1,16 @@
+func TestEncoderSetMaxDynamicTableSize(t *testing.T) {
+var buf bytes.Buffer
+e := NewEncoder(&buf)
+tests := []struct {
+v           uint32
+wantUpdate  bool
+wantMinSize uint32
+wantMaxSize uint32
+}{
+// Set new table size to 2048
+{2048, true, 2048, 2048},
+
+// Set new table size to 16384, but still limited to
+// 4096
+{16384, true, 2048, 4096},
+}

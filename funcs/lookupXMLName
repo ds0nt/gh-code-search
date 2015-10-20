@@ -1,0 +1,4 @@
+func lookupXMLName(typ reflect.Type) (xmlname *fieldInfo) {
+for typ.Kind() == reflect.Ptr {
+typ = typ.Elem()
+}

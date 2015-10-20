@@ -1,0 +1,4 @@
+func u32max(a, b uint32) uint32 {
+if a < b {
+return b
+}

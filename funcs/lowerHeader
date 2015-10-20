@@ -1,0 +1,4 @@
+func lowerHeader(v string) string {
+if s, ok := commonLowerHeader[v]; ok {
+return s
+}

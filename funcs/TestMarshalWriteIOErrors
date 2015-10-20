@@ -1,0 +1,8 @@
+func TestMarshalWriteIOErrors(t *testing.T) {
+enc := NewEncoder(errWriter{})
+
+expectErr := "unwritable"
+err := enc.Encode(&Passenger{})
+if err == nil || err.Error() != expectErr {
+t.Errorf("EscapeTest = [error] %v, want %v", err, expectErr)
+}

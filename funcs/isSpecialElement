@@ -1,0 +1,7 @@
+func isSpecialElement(element *Node) bool {
+switch element.Namespace {
+case "", "html":
+return isSpecialElementMap[element.Data]
+case "svg":
+return element.Data == "foreignObject"
+}

@@ -1,0 +1,5 @@
+func TestUnmarshalFeed(t *testing.T) {
+var f Feed
+if err := Unmarshal([]byte(atomFeedString), &f); err != nil {
+t.Fatalf("Unmarshal: %s", err)
+}

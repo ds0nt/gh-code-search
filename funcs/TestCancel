@@ -1,0 +1,12 @@
+func TestCancel(t *testing.T) {
+ctx, cancel := context.WithCancel(context.Background())
+go func() {
+time.Sleep(requestDuration / 2)
+cancel()
+}()
+
+resp, err := doRequest(ctx)
+
+if resp != nil || err == nil {
+t.Fatalf("expected error, didn't get one. resp: %v", resp)
+}

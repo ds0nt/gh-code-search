@@ -1,0 +1,5 @@
+func SupportsIPv4() bool {
+ln, err := net.Listen("tcp4", "127.0.0.1:0")
+if err != nil {
+return false
+}

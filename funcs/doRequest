@@ -1,0 +1,11 @@
+func doRequest(ctx context.Context) (*http.Response, error) {
+var okHandler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+time.Sleep(requestDuration)
+w.Write([]byte(requestBody))
+})
+
+serv := httptest.NewServer(okHandler)
+defer serv.Close()
+
+return Get(ctx, nil, serv.URL)
+}

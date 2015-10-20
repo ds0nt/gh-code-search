@@ -1,0 +1,6 @@
+func parseNoTagLists(s string) (h ifHeader, ok bool) {
+for {
+l, remaining, ok := parseList(s)
+if !ok {
+return ifHeader{}, false
+}

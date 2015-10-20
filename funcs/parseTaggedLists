@@ -1,0 +1,9 @@
+func parseTaggedLists(s string) (h ifHeader, ok bool) {
+resourceTag, n := "", 0
+for first := true; ; first = false {
+tokenType, tokenStr, remaining := lex(s)
+switch tokenType {
+case angleTokenType:
+if !first && n == 0 {
+return ifHeader{}, false
+}

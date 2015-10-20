@@ -1,0 +1,5 @@
+func checkApproximate(t *testing.T, o Observable, y float64) {
+x := o.(*Float)
+if !isApproximate(x, y) {
+t.Errorf("Wanted %g, got %g", y, x.Value())
+}

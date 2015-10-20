@@ -1,0 +1,4 @@
+func shouldRetryRequest(err error) bool {
+// TODO: or GOAWAY graceful shutdown stuff
+return err == errClientConnClosed
+}

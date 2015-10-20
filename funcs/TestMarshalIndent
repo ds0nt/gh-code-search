@@ -1,0 +1,7 @@
+func TestMarshalIndent(t *testing.T) {
+for i, test := range marshalIndentTests {
+data, err := MarshalIndent(test.Value, test.Prefix, test.Indent)
+if err != nil {
+t.Errorf("#%d: Error: %s", i, err)
+continue
+}

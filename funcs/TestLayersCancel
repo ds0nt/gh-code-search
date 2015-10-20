@@ -1,0 +1,3 @@
+func TestLayersCancel(t *testing.T) {
+testLayers(t, time.Now().UnixNano(), false)
+}

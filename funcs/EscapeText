@@ -1,0 +1,3 @@
+func EscapeText(w io.Writer, s []byte) error {
+return escapeText(w, s, true)
+}

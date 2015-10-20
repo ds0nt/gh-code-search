@@ -1,0 +1,10 @@
+func TestPriorityExclusiveZero(t *testing.T) {
+// A B and C are all children of the 0 stream.
+// Exclusive reprioritization to any of the streams
+// should bring the rest of the streams under the
+// reprioritized stream
+streams := make(map[uint32]*stream)
+a := &stream{
+parent: nil,
+weight: 16,
+}

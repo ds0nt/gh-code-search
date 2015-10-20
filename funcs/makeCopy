@@ -1,0 +1,5 @@
+func makeCopy(b []byte) []byte {
+b1 := make([]byte, len(b))
+copy(b1, b)
+return b1
+}

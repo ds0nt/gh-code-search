@@ -1,0 +1,12 @@
+func parentCancelCtx(parent Context) (*cancelCtx, bool) {
+for {
+switch c := parent.(type) {
+case *cancelCtx:
+return c, true
+case *timerCtx:
+return &c.cancelCtx, true
+case *valueCtx:
+parent = c.Context
+default:
+return nil, false
+}

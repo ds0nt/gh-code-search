@@ -1,0 +1,3 @@
+func EchoServer(ws *websocket.Conn) {
+io.Copy(ws, ws)
+}

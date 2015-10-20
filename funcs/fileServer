@@ -1,0 +1,8 @@
+func fileServer(url string) http.Handler {
+return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+hi, err := fsGrp.Do(url, func() (interface{}, error) {
+fsMu.Lock()
+if h, ok := fsCache[url]; ok {
+fsMu.Unlock()
+return h, nil
+}

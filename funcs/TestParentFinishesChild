@@ -1,0 +1,22 @@
+func TestParentFinishesChild(t *testing.T) {
+// Context tree:
+// parent -> cancelChild
+// parent -> valueChild -> timerChild
+parent, cancel := WithCancel(Background())
+cancelChild, stop := WithCancel(parent)
+defer stop()
+valueChild := WithValue(parent, "key", "value")
+timerChild, stop := WithTimeout(valueChild, 10000*time.Hour)
+defer stop()
+
+select {
+case x := <-parent.Done():
+t.Errorf("<-parent.Done() == %v want nothing (it should block)", x)
+case x := <-cancelChild.Done():
+t.Errorf("<-cancelChild.Done() == %v want nothing (it should block)", x)
+case x := <-timerChild.Done():
+t.Errorf("<-timerChild.Done() == %v want nothing (it should block)", x)
+case x := <-valueChild.Done():
+t.Errorf("<-valueChild.Done() == %v want nothing (it should block)", x)
+default:
+}

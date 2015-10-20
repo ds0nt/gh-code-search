@@ -1,0 +1,8 @@
+func TestHybiShortBinaryFrame(t *testing.T) {
+frameHeader := &hybiFrameHeader{Fin: true, OpCode: BinaryFrame}
+payload := []byte("hello")
+testHybiFrame(t, []byte{0x82, 0x05}, payload, payload, frameHeader)
+
+payload = make([]byte, 125)
+testHybiFrame(t, []byte{0x82, 125}, payload, payload, frameHeader)
+}

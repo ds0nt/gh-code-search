@@ -1,0 +1,13 @@
+func dumpLevel(w io.Writer, n *Node, level int) error {
+dumpIndent(w, level)
+switch n.Type {
+case ErrorNode:
+return errors.New("unexpected ErrorNode")
+case DocumentNode:
+return errors.New("unexpected DocumentNode")
+case ElementNode:
+if n.Namespace != "" {
+fmt.Fprintf(w, "<%s %s>", n.Namespace, n.Data)
+} else {
+fmt.Fprintf(w, "<%s>", n.Data)
+}

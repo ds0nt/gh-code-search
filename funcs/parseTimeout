@@ -1,0 +1,4 @@
+func parseTimeout(s string) (time.Duration, error) {
+if s == "" {
+return infiniteTimeout, nil
+}

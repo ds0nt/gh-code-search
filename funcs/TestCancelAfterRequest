@@ -1,0 +1,13 @@
+func TestCancelAfterRequest(t *testing.T) {
+ctx, cancel := context.WithCancel(context.Background())
+
+resp, err := doRequest(ctx)
+
+// Cancel before reading the body.
+// Request.Body should still be readable after the context is canceled.
+cancel()
+
+b, err := ioutil.ReadAll(resp.Body)
+if err != nil || string(b) != requestBody {
+t.Fatalf("could not read body: %q %v", b, err)
+}

@@ -1,0 +1,5 @@
+func TestBackground(t *testing.T) {
+c := Background()
+if c == nil {
+t.Fatalf("Background returned nil")
+}

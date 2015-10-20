@@ -1,0 +1,5 @@
+func requireCurl(t *testing.T) {
+out, err := dockerLogs(curl(t, "--version"))
+if err != nil {
+t.Skipf("failed to determine curl features; skipping test")
+}

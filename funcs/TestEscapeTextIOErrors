@@ -1,0 +1,7 @@
+func TestEscapeTextIOErrors(t *testing.T) {
+expectErr := "unwritable"
+err := EscapeText(errWriter{}, []byte{'A'})
+
+if err == nil || err.Error() != expectErr {
+t.Errorf("have %v, want %v", err, expectErr)
+}

@@ -1,0 +1,6 @@
+func TestWritePushPromise(t *testing.T) {
+pp := PushPromiseParam{
+StreamID:      42,
+PromiseID:     42,
+BlockFragment: []byte("abc"),
+}

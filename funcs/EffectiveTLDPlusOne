@@ -1,0 +1,5 @@
+func EffectiveTLDPlusOne(domain string) (string, error) {
+suffix, _ := PublicSuffix(domain)
+if len(domain) <= len(suffix) {
+return "", fmt.Errorf("publicsuffix: cannot derive eTLD+1 for domain %q", domain)
+}

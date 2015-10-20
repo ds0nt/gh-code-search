@@ -1,0 +1,5 @@
+func writeQuoted(w writer, s string) error {
+var q byte = '"'
+if strings.Contains(s, `"`) {
+q = '''
+}

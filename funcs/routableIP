@@ -1,0 +1,4 @@
+func routableIP(network string, ip net.IP) net.IP {
+if !ip.IsLoopback() && !ip.IsLinkLocalUnicast() && !ip.IsGlobalUnicast() {
+return nil
+}

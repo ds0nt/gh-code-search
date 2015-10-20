@@ -1,0 +1,17 @@
+func TestHybiServerFirefoxHandshake(t *testing.T) {
+config := new(Config)
+handshaker := &hybiServerHandshaker{Config: config}
+br := bufio.NewReader(strings.NewReader(`GET /chat HTTP/1.1
+Host: server.example.com
+Upgrade: websocket
+Connection: keep-alive, upgrade
+Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==
+Origin: http://example.com
+Sec-WebSocket-Protocol: chat, superchat
+Sec-WebSocket-Version: 13
+
+`))
+req, err := http.ReadRequest(br)
+if err != nil {
+t.Fatal("request", err)
+}

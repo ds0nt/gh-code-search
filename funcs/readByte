@@ -1,0 +1,4 @@
+func readByte(p []byte) (remain []byte, b byte, err error) {
+if len(p) == 0 {
+return nil, 0, io.ErrUnexpectedEOF
+}

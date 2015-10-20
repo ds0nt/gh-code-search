@@ -1,0 +1,5 @@
+func TestDeadline(t *testing.T) {
+c, _ := WithDeadline(Background(), time.Now().Add(100*time.Millisecond))
+if got, prefix := fmt.Sprint(c), "context.Background.WithDeadline("; !strings.HasPrefix(got, prefix) {
+t.Errorf("c.String() = %q want prefix %q", got, prefix)
+}

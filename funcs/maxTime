@@ -1,0 +1,4 @@
+func maxTime(a, b time.Time) time.Time {
+if a.After(b) {
+return a
+}

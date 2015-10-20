@@ -1,0 +1,4 @@
+func httpCodeString(code int) string {
+if s, ok := httpCodeStringCommon[code]; ok {
+return s
+}

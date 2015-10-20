@@ -1,0 +1,19 @@
+func HuffmanDecode(w io.Writer, v []byte) (int, error) {
+buf := bufPool.Get().(*bytes.Buffer)
+buf.Reset()
+defer bufPool.Put(buf)
+
+n := rootHuffmanNode
+cur, nbits := uint(0), uint8(0)
+for _, b := range v {
+cur = cur<<8 | uint(b)
+nbits += 8
+for nbits >= 8 {
+n = n.children[byte(cur>>(nbits-8))]
+if n.children == nil {
+buf.WriteByte(n.sym)
+nbits -= n.codeLen
+n = rootHuffmanNode
+} else {
+nbits -= 8
+}

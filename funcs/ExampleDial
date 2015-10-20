@@ -1,0 +1,7 @@
+func ExampleDial() {
+origin := "http://localhost/"
+url := "ws://localhost:12345/ws"
+ws, err := websocket.Dial(url, "", origin)
+if err != nil {
+log.Fatal(err)
+}

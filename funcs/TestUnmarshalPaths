@@ -1,0 +1,6 @@
+func TestUnmarshalPaths(t *testing.T) {
+for _, pt := range pathTests {
+v := reflect.New(reflect.TypeOf(pt).Elem()).Interface()
+if err := Unmarshal([]byte(pathTestString), v); err != nil {
+t.Fatalf("Unmarshal: %s", err)
+}

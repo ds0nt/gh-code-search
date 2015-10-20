@@ -1,0 +1,5 @@
+func ReadFrameHeader(r io.Reader) (FrameHeader, error) {
+bufp := fhBytes.Get().(*[]byte)
+defer fhBytes.Put(bufp)
+return readFrameHeader(*bufp, r)
+}

@@ -1,0 +1,4 @@
+func parsePingFrame(fh FrameHeader, payload []byte) (Frame, error) {
+if len(payload) != 8 {
+return nil, ConnectionError(ErrCodeFrameSize)
+}
